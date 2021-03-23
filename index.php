@@ -151,9 +151,15 @@
                             echo '<br>';
                             echo '<br>';
                             echo 'MEMORIA PRINCIPAL';
-                            var_dump($lista_completa);
+                            echo '<pre>';
+                            print_r($lista_completa);
+                            echo '</pre>';
+                            // var_dump($lista_completa);
                             echo 'COMENTARIOS (LINEAS IGNORADAS)';
-                            var_dump($lista_ignorada_comentarios);
+                            echo '<pre>';
+                            print_r($lista_ignorada_comentarios);
+                            echo '</pre>';
+                            // var_dump($lista_ignorada_comentarios);
                     ?>
                 </div>
             </div>
@@ -161,9 +167,15 @@
                 <div class="card p-3">
                     <?php
                         echo 'VARIABLES';
-                        var_dump($lista_variables);
+                        echo '<pre>';
+                        print_r($lista_variables);
+                        echo '</pre>';
+                        // var_dump($lista_variables);
                         echo 'ETIQUETAS';
-                        var_dump($lista_etiquetas);
+                        echo '<pre>';
+                        print_r($lista_etiquetas);
+                        echo '</pre>';
+                        // var_dump($lista_etiquetas);
                         }
                     ?>
                 </div>
