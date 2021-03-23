@@ -58,23 +58,32 @@
                         <a class="nav-link" href="#"><i class="fas fa-memory"></i> Memoria</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-book"></i> Instrucciones</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Salir</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="fs-6 fw-bold m-3">
-        MENSAJE DE VALIDACIÓN: 
-        <?php
-            session_start();
-        ?>
-        <?php
-            if (isset($_SESSION['message']) && $_SESSION['message']){
-                printf('<b>%s</b>', $_SESSION['message']);
-                unset($_SESSION['message']);
-            }
-        ?>
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-8">
+                <div class="alert alert-info fw-bold shadow" role="alert">
+                    Mensaje de validación: 
+                    <?php
+                        session_start();
+                    ?>
+                    <?php
+                        if (isset($_SESSION['message']) && $_SESSION['message']){
+                            printf('<b>%s</b>', $_SESSION['message']);
+                            unset($_SESSION['message']);
+                        }
+                    ?>
+                </div>
+            </div>
+        </div>
     </div>
     <?php
         function quitar_tildes($cadena) {
@@ -130,10 +139,39 @@
             }
         }
     ?>
-    <div class="container-fluid">
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-3">
+                <div class="card shadow p-3 mb-3">
+                    <label for="customRange1" class="form-label">
+                        Velocidad
+                    </label>
+                    <input type="range" class="form-range" id="customRange1">
+                    <div class="input-group mt-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Memoria</span>
+                        <input type="number" min="0" max="9999" value="0" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                    <div class="input-group mt-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Kernel</span>
+                        <input type="number" min="0" max="100" value="0" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                    <center class="mt-3">
+                        Acumulador: 0
+                    </center>
+                </div>
+            </div>
+            <div class="col-5">
+                <img src="img/monitor.png" class="img-fluid" alt="Monitor">
+            </div>
+            <div class="col-4 mb-3">
+                <img src="img/impresora.png" class="img-fluid" alt="Monitor">
+            </div>
+        </div>
+    </div>
+    <div class="container">
         <div class="row">
             <div class="col-7">
-                <div class="card p-3">
+                <div class="card p-3 shadow">
                     <?php
                         $archivo = fopen('carpeta_archivo/archivo.ch','r');
                         $nombre_fichero = 'carpeta_archivo/archivo.ch';
@@ -166,7 +204,7 @@
                 </div>
             </div>
             <div class="col-5">
-                <div class="card p-3">
+                <div class="card p-3 shadow">
                     <?php
                         echo 'VARIABLES';
                         echo '<pre>';
