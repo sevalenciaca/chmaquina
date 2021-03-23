@@ -83,12 +83,6 @@
             $texto = str_replace($no_permitidas, $permitidas ,$cadena);
             return $texto;
         }
-        function validacion_archivo() {
-            $nombre_fichero = 'archivo.ch';
-            $vacio=(!file_exists($nombre_fichero) || !filesize($nombre_fichero)) ? FALSE : TRUE;
-            /*Prueba de la variable*/
-            var_dump($vacio);
-        }
         // Array con operaciones validas, para validar sintaxis
         $permitidas = array("cargue", "almacene", "nueva", "lea", "sume", "reste", "multiplique", "divida", "potencia", "modulo", "concatene", "elimine", "extraiga", "y", "o", "no", "muestre", "imprima", "vaya", "vayasi", "etiqueta", "retorne", "xxx");
         // Ruta del archivo guardado
@@ -141,12 +135,20 @@
             <div class="col-7">
                 <div class="card p-3">
                     <?php
-                        if($cont != 0){
+                        $archivo = fopen('carpeta_archivo/archivo.ch','r');
+                        $nombre_fichero = 'carpeta_archivo/archivo.ch';
+                        $vacio=(!file_exists($nombre_fichero) || !filesize($nombre_fichero)) ? FALSE : TRUE;
+                        fclose($archivo);
+                        if (!$vacio) {
+                            echo 'CARGUE UN PROGRAMA';
+                        }
+                        elseif ($cont != 0) {
                             echo 'SINTAXIS INCORRECTA. Se encontraron errores de sintaxis en el archivo en las siguientes lineas';
                             for ($j=0; $j < count($errores) ; $j++) { 
                                 var_dump($errores[$j]);
                             }
-                        }else{
+                        }
+                        else{
                             echo 'SINTAXIS CORRECTA';
                             echo '<br>';
                             echo '<br>';
