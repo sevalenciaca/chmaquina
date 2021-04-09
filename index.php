@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <!-- CSS -->
     <link rel="stylesheet" href="css/estilos.css">
+
     <!-- Título de la pestaña -->
     <title>CH MAQUINA</title>
     <!-- Favicon de la pestaña -->
@@ -17,13 +18,10 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
         <div class="container">
             <a class="navbar-brand"><i class="fas fa-laptop-code"></i> CH MÁQUINA</a>
-            <span class="navbar-text">
-                <i class="fas fa-user"></i> Sebastián Valencia Carvajal
-            </span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="d-flex justify-content-end collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -139,9 +137,9 @@
             }
         }
     ?>
-    <div class="container mt-3">
+    <div class="container mt-3 mb-4">
         <div class="row">
-            <div class="col-3">
+            <div class="col-12 col-md-4 col-lg-3 col-xl-3">
                 <div class="card shadow p-3 mb-3">
                     <label for="customRange1" class="form-label">
                         Velocidad
@@ -160,17 +158,17 @@
                     </center>
                 </div>
             </div>
-            <div class="col-5">
+            <div class="col-12 col-md-4 col-lg-5 col-xl-5">
                 <img src="img/monitor.png" class="img-fluid" alt="Monitor">
             </div>
-            <div class="col-4 mb-3">
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
                 <img src="img/impresora.png" class="img-fluid" alt="Monitor">
             </div>
         </div>
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-7">
+            <div class="col-12 col-md-12 col-lg-7 col-xl-7">
                 <div class="card p-3 shadow">
                     <?php
                         $archivo = fopen('carpeta_archivo/archivo.ch','r');
@@ -203,7 +201,7 @@
                     ?>
                 </div>
             </div>
-            <div class="col-5">
+            <div class="col-12 col-md-12 col-lg-5 col-xl-5">
                 <div class="card p-3 shadow">
                     <?php
                         echo 'VARIABLES';
@@ -222,6 +220,17 @@
             </div>
         </div>
     </div>
+    <!-- Pie de Página -->
+    <footer class="pb-4 pt-2 mt-4" style="background-color:#212529;">
+        <div class="container">
+            <div class="row font-italic pt-3 mt-2">
+                <div class="col d-flex justify-content-center text-center" style="color:white;">
+                    &copy; Copyright 2021 - Sebastian Valencia Carvajal<br>Todos los derechos reservados<br>
+                    <br>Proyecto desarrollado por: Sebastián Valencia Carvajal - 0916066<br>sevalenciaca@unal.edu.co
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 <!-- Bootstrap js -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
