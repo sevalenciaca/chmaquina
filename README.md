@@ -1,19 +1,18 @@
 Proyecto CH Máquina primera entrega Fase B
 
-Características del Proyecto:
+##Características del Proyecto:
+*Es un proyecto construido 100% en la web y subido a un servidor
+*Accesible desde cualquier dispositivo con un navegador
+*Tecnología responsiva que se adapta a cualquier dispotivo (Computador, Celular, Table etc.)
+*Desarrolado en PHP, HTML y CSS (Bootstrap)
 
-    Es un proyecto construido 100% en la web y subido a un servidor
-    Accesible desde cualquier dispositivo con un navegador
-    Tecnología responsiva que se adapta a cualquier dispotivo (Computador, Celular, Table etc.)
-    Desarrolado en PHP, HTML y CSS (Bootstrap)
+##Instrucciones para acceder al proyecto:
+*Hay dos enlaces, es decir se puede acceder desde dos dominios, uno de prueba y otro en un servidor con mi dominio personal:
+[sebasvalcar.com](https://sebasvalcar.com/)
+[chmaquina-sevalenciaca-916066.herokuapp.com](https://chmaquina-sevalenciaca-916066.herokuapp.com/)
 
-Instrucciones para acceder al proyecto:
+##Instrucciones de uso:
+>Para subir un programa se accede desde la seccion de archivo
 
-    Hay dos enlaces, es decir se puede acceder desde dos dominios, uno de prueba y otro en un servidor con mi dominio personal:
-        https://sebasvalcar.com
-        https://chmaquina-sevalenciaca-916066.herokuapp.com/
+>© Copyright 2021 - Sebastian Valencia Carvajal - Todos los derechos reservados - 0916066 - sevalenciaca@unal.edu.co
 
-Instrucciones de uso:
-
-© Copyright 2021 - Sebastian Valencia Carvajal - 0916066 - sevalenciaca@unal.edu.co
-Todos los derechos reservados
