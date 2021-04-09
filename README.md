@@ -14,5 +14,8 @@ Proyecto CH Máquina primera entrega Fase B
 ##Instrucciones de uso:
 >Para subir un programa se accede desde la seccion de archivo
 
+##Repositorio proyecto:
+>El repositorio del proyecto esta alojado en GitHub en el siguiente enlace: https://github.com/sevalenciaca/chmaquina
+
 >© Copyright 2021 - Sebastian Valencia Carvajal - Todos los derechos reservados - 0916066 - sevalenciaca@unal.edu.co
 
