@@ -7,7 +7,7 @@
 * Desarrolado en PHP, HTML y CSS (Bootstrap)
 
 ## Instrucciones para acceder al proyecto:
-* Hay dos enlaces, es decir se puede acceder desde dos dominios, uno de prueba y otro en un servidor con mi dominio personal:
+> Hay dos enlaces, es decir se puede acceder desde dos dominios, uno de prueba y otro en un servidor con mi dominio personal:
   * [sebasvalcar.com](https://sebasvalcar.com/)
   * [chmaquina-sevalenciaca-916066.herokuapp.com](https://chmaquina-sevalenciaca-916066.herokuapp.com/)
 
