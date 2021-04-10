@@ -235,6 +235,80 @@
             </div>
         </div>
     </div>
+    <?php
+        //función para obtener el nombre de las carpetas y los archivos en array multidimensional
+        function dirToArray($dir) {
+ 
+            //creo un array
+            $listDir = array();
+ 
+            //abro los directorios contenidos en $dir
+            if($handler = opendir($dir)) {
+ 
+                //leo todos los elementos contenidos 
+                while (($file = readdir($handler)) !== FALSE) {
+ 
+                    //verifico que hayan elementos
+                    if ($file != "." && $file != "..") {
+ 
+                        /*si los elementos son archivos, guardo los elementos 
+                        en algún indice (dimensión) del array*/
+                        if(is_file($dir."/".$file)) {
+                            $listDir[] = $file;
+ 
+                        /*si los elementos son directorios, guardo los elementos 
+                        en otro índice o dimensión, repitiendo hasta que hayan elementos*/
+                        }elseif(is_dir($dir."/".$file)){
+                            $listDir[$file] = dirToArray ($dir."/".$file);
+                        }
+                    }
+                }
+                closedir($handler);
+            }
+            return $listDir;
+        }
+ 
+        $dir = "carpeta_archivo/";
+        $listDir = dirToArray($dir);
+        echo $listDir[0];
+        echo $listDir[1];
+ 
+    ?>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
     <!-- Pie de Página -->
     <footer class="pb-4 pt-2 mt-4" style="background-color:#212529;">
         <div class="container">

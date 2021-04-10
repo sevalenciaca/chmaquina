@@ -28,7 +28,7 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Cargar'){
             // Ruta y nombre del directorio donde se almacena el archivo
             $uploadFileDir = './carpeta_archivo/';
             // Ruta completa incluyendo el nombre del nuevo archivo
-            $dest_path = $uploadFileDir . 'archivo.ch';
+            $dest_path = $uploadFileDir . $fileName;
             // Mover el archivo cargado a la ubicación específica, en este caso a (carpeta_archivo)
             // Esta función toma dos argumentos. El primer argumento es el nombre de archivo del archivo cargado, y el segundo argumento es la ruta de destino a la que desea mover el archivo.
             if(move_uploaded_file($fileTmpPath, $dest_path)) {
