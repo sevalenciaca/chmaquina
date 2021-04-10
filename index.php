@@ -138,31 +138,46 @@
         }
     ?>
     <div class="container mt-3 mb-4">
-        <div class="row">
+        <div class="row d-flex align-items-center">
             <div class="col-12 col-md-4 col-lg-3 col-xl-3">
-                <div class="card shadow p-3 mb-3">
-                    <label for="customRange1" class="form-label">
-                        Velocidad
-                    </label>
-                    <input type="range" class="form-range" id="customRange1">
-                    <div class="input-group mt-3">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Memoria</span>
-                        <input type="number" min="0" max="9999" value="0" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <div class="position-relative">
+                    <img class="p-2 img-fluid" src="img/cpu.png" alt="CPU">
+                    <div class="p-4 position-absolute top-0 end-0 start-0 botton-0">
+                        <label for="customRange1" class="form-label" style="color:white">
+                            <strong>Velocidad</strong>
+                        </label>
+                        <input type="range" class="form-range" id="customRange1">
+                        <div class="input-group mt-1">
+                            <span class="input-group-text" id="inputGroup-sizing-default"><strong>Memoria</strong></span>
+                            <input type="number" min="0" max="9999" value="0" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mt-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default"><strong>Kernel</strong></span>
+                            <input type="number" min="0" max="100" value="0" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="mt-3 ps-2" style="color:white">
+                            <strong>Acumulador: 0</strong>
+                        </div>
+                        <div class="mt-2 ps-2" style="color:white">
+                            <strong>PC: ...</strong>
+                        </div>
                     </div>
-                    <div class="input-group mt-3">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Kernel</span>
-                        <input type="number" min="0" max="100" value="0" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    </div>
-                    <center class="mt-3">
-                        Acumulador: 0
-                    </center>
                 </div>
             </div>
-            <div class="col-12 col-md-4 col-lg-5 col-xl-5">
+            <div class="position-relative col-12 col-md-4 col-lg-5 col-xl-5">
                 <img src="img/monitor.png" class="img-fluid" alt="Monitor">
+                <div class="p-4 ms-3 position-absolute top-0 end-0 start-0 botton-0" style="color:#2fff00">
+                    > _ Resultado = 145
+                </div>
             </div>
-            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
-                <img src="img/impresora.png" class="img-fluid" alt="Monitor">
+            <div class="position-relative col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                <img src="img/impresora.png" class="img-fluid" alt="Impresora">
+                <div class="mt-2 position-absolute top-0 start-50 end-0 botton-0">
+                    <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-power-off"></i> Imprimir</button>
+                </div>
+                <div class="position-absolute top-50 start-50 end-0 botton-0 translate-middle">
+                    Resultado = 145
+                </div>
             </div>
         </div>
     </div>
@@ -225,7 +240,7 @@
         <div class="container">
             <div class="row font-italic pt-3 mt-2">
                 <div class="col d-flex justify-content-center text-center" style="color:white;">
-                    &copy; Copyright 2021 - Sebastian Valencia Carvajal<br>Todos los derechos reservados<br>
+                    &copy; Copyright 2021 - Sebastián | Todos los derechos reservados<br>
                     <br>Proyecto desarrollado por: Sebastián Valencia Carvajal - 0916066<br>sevalenciaca@unal.edu.co
                 </div>
             </div>
