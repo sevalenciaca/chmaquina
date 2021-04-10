@@ -72,8 +72,6 @@
                     Mensaje de validación: 
                     <?php
                         session_start();
-                    ?>
-                    <?php
                         if (isset($_SESSION['message']) && $_SESSION['message']){
                             printf('<b>%s</b>', $_SESSION['message']);
                             unset($_SESSION['message']);
@@ -90,17 +88,44 @@
             $texto = str_replace($no_permitidas, $permitidas ,$cadena);
             return $texto;
         }
+        //función para obtener el nombre de las carpetas y los archivos en array multidimensional
+        function dirToArray($dir) {
+            //creo un array
+            $listDir = array();
+            //abro los directorios contenidos en $dir
+            if($handler = opendir($dir)) {
+                //leo todos los elementos contenidos 
+                while (($file = readdir($handler)) !== FALSE) {
+                    //verifico que hayan elementos
+                    if ($file != "." && $file != "..") {
+                        /*si los elementos son archivos, guardo los elementos 
+                        en algún indice (dimensión) del array*/
+                        if(is_file($dir."/".$file)) {
+                            $listDir[] = $file;
+                        /*si los elementos son directorios, guardo los elementos 
+                        en otro índice o dimensión, repitiendo hasta que hayan elementos*/
+                        }elseif(is_dir($dir."/".$file)){
+                            $listDir[$file] = dirToArray ($dir."/".$file);
+                        }
+                    }
+                }
+                closedir($handler);
+            }
+            return $listDir;
+        }
+        $dir = "carpeta_archivo/";
+        $listDir = dirToArray($dir);
         // Array con operaciones validas, para validar sintaxis
         $permitidas = array("cargue", "almacene", "nueva", "lea", "sume", "reste", "multiplique", "divida", "potencia", "modulo", "concatene", "elimine", "extraiga", "y", "o", "no", "muestre", "imprima", "vaya", "vayasi", "etiqueta", "retorne", "xxx");
         // Ruta del archivo guardado
-        $archivo = fopen('carpeta_archivo/archivo.ch','r');
+        $archivo = fopen('carpeta_archivo/'.$listDir[0],'r');
         // Abrir archivo
         while (!feof($archivo)) {
             // Se lee cada una de las lineas del archivo y se almacenan en la variable "linea"
             $linea = quitar_tildes(trim(fgets($archivo)));
             // Validación funcion para ignorar las lineas que tengan '//' y posteriormente almacenarlas en el arreglo "lista_ignore"
             if (stristr($linea, '//')) {
-                $lista_ignorada_comentarios[] = $linea;
+                $lista_ignorada_comentarios[] = $linea; 
             }else {
                 $lista_completa[]=$linea;
                 if (stristr($linea, 'etiqueta')) {
@@ -181,131 +206,225 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-md-12 col-lg-7 col-xl-7">
-                <div class="card p-3 shadow">
-                    <?php
-                        $archivo = fopen('carpeta_archivo/archivo.ch','r');
-                        $nombre_fichero = 'carpeta_archivo/archivo.ch';
-                        $vacio=(!file_exists($nombre_fichero) || !filesize($nombre_fichero)) ? FALSE : TRUE;
-                        fclose($archivo);
-                        if (!$vacio) {
-                            echo 'CARGUE UN PROGRAMA';
-                        }
-                        elseif ($cont != 0) {
-                            echo 'SINTAXIS INCORRECTA. Se encontraron errores de sintaxis en el archivo en las siguientes lineas';
-                            for ($j=0; $j < count($errores) ; $j++) { 
-                                var_dump($errores[$j]);
-                            }
-                        }
-                        else{
-                            echo 'SINTAXIS CORRECTA';
-                            echo '<br>';
-                            echo '<br>';
-                            echo 'MEMORIA PRINCIPAL';
-                            echo '<pre>';
-                            print_r($lista_completa);
-                            echo '</pre>';
-                            // var_dump($lista_completa);
-                            echo 'COMENTARIOS (LINEAS IGNORADAS)';
-                            echo '<pre>';
-                            print_r($lista_ignorada_comentarios);
-                            echo '</pre>';
-                            // var_dump($lista_ignorada_comentarios);
-                    ?>
-                </div>
-            </div>
-            <div class="col-12 col-md-12 col-lg-5 col-xl-5">
-                <div class="card p-3 shadow">
-                    <?php
-                        echo 'VARIABLES';
-                        echo '<pre>';
-                        print_r($lista_variables);
-                        echo '</pre>';
-                        // var_dump($lista_variables);
-                        echo 'ETIQUETAS';
-                        echo '<pre>';
-                        print_r($lista_etiquetas);
-                        echo '</pre>';
-                        // var_dump($lista_etiquetas);
-                        }
-                    ?>
-                </div>
-            </div>
-        </div>
-    </div>
-    <?php
-        //función para obtener el nombre de las carpetas y los archivos en array multidimensional
-        function dirToArray($dir) {
- 
-            //creo un array
-            $listDir = array();
- 
-            //abro los directorios contenidos en $dir
-            if($handler = opendir($dir)) {
- 
-                //leo todos los elementos contenidos 
-                while (($file = readdir($handler)) !== FALSE) {
- 
-                    //verifico que hayan elementos
-                    if ($file != "." && $file != "..") {
- 
-                        /*si los elementos son archivos, guardo los elementos 
-                        en algún indice (dimensión) del array*/
-                        if(is_file($dir."/".$file)) {
-                            $listDir[] = $file;
- 
-                        /*si los elementos son directorios, guardo los elementos 
-                        en otro índice o dimensión, repitiendo hasta que hayan elementos*/
-                        }elseif(is_dir($dir."/".$file)){
-                            $listDir[$file] = dirToArray ($dir."/".$file);
-                        }
+            <?php
+                $archivo = fopen('carpeta_archivo/'.$listDir[0],'r');
+                $nombre_fichero = 'carpeta_archivo/'.$listDir[0];
+                $vacio=(!file_exists($nombre_fichero) || !filesize($nombre_fichero)) ? FALSE : TRUE;
+                fclose($archivo);
+                if (!$vacio) {
+                    echo 'CARGUE UN PROGRAMA';
+                }
+                elseif ($cont != 0) {
+                    echo 'SINTAXIS INCORRECTA. Se encontraron errores de sintaxis en el archivo en las siguientes lineas';
+                    for ($j=0; $j < count($errores) ; $j++) { 
+                        var_dump($errores[$j]);
                     }
                 }
-                closedir($handler);
-            }
-            return $listDir;
-        }
+                else{
+            ?>
+                <div class="col-12 col-md-12 col-lg-8 col-xl-8">
+                    <p class="fs-5 mb-0 p-2 d-flex justify-content-center" style="background-color: #212529; color:white">CH PROGRAMAS</p>
+                    <table class="table table-dark table-striped shadow">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Programa</th>
+                                <th scope="col"># Instrucciones</th>
+                                <th scope="col">RB</th>
+                                <th scope="col">RLC</th>
+                                <th scope="col">RLP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                for ($i=0; $i < count($listDir); $i++) {
+                                    $number = $i;
+                                    $length = 4;
+                                    $string = substr(str_repeat(0, $length).$number, - $length);
+                                    echo 
+                                    '
+                                    <tr>
+                                        <td scope="row">'.$string.'</td>
+                                        <td>'.$listDir[$i].'</td>
+                                        <td>28</td>
+                                        <td>11</td>
+                                        <td>32</td>
+                                        <td>38</td>
+                                    </tr>
+                                    '
+                                    ;
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-lg-6 col-xl-6">
+                            <table class="table table-light table-striped shadow">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Posición</th>
+                                        <th scope="col">Instrucción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        for ($i=0; $i < count($lista_completa); $i++) {
+                                            $number = $i;
+                                            $length = 4;
+                                            $string = substr(str_repeat(0, $length).$number, - $length);
+                                            echo 
+                                            '
+                                            <tr>
+                                                <td scope="row">'.$string.'</td>
+                                                <td>'.$lista_completa[$i].'</td>
+                                            </tr>
+                                            '
+                                            ;
+                                        }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-6 col-xl-6">
+                            <p class="fs-5 mb-0 p-2 d-flex justify-content-center" style="background-color:#FFF3CD">COMENTARIOS (LINEAS IGNORADAS)</p>
+                            <table class="table table-warning table-striped shadow">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Posición</th>
+                                        <th scope="col">Instrucción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        for ($i=0; $i < count($lista_ignorada_comentarios); $i++) {
+                                            $number = $i;
+                                            $length = 4;
+                                            $string = substr(str_repeat(0, $length).$number, - $length);
+                                            echo 
+                                            '
+                                            <tr>
+                                                <td scope="row">'.$string.'</td>
+                                                <td>'.$lista_ignorada_comentarios[$i].'</td>
+                                            </tr>
+                                            '
+                                            ;
+                                        }
+                                    ?>
+                                </tbody>
+                            </table>
+                            <p class="fs-5 mb-0 p-2 d-flex justify-content-center" style="background-color:#C5E8EF">VARIABLES</p>
+                            <table class="table table-info table-striped shadow">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Posición</th>
+                                        <th scope="col">Instrucción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        for ($i=0; $i < count($lista_variables); $i++) {
+                                            $number = $i;
+                                            $length = 4;
+                                            $string = substr(str_repeat(0, $length).$number, - $length);
+                                            echo 
+                                            '
+                                            <tr>
+                                                <td scope="row">'.$string.'</td>
+                                                <td>'.$lista_variables[$i].'</td>
+                                            </tr>
+                                            '
+                                            ;
+                                        }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <?php
+                    }
+                ?>
+                </div>
+                <div class="col-12 col-md-12 col-lg-4 col-xl-4">
+                    <p class="fs-5 mb-0 p-2 d-flex justify-content-center" style="background-color: #212529; color:white">MEMORIA PRINCIPAL</p>
+                    <table class="table table-dark table-striped shadow">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Direct</th>
+                                <th scope="col">Contenido</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"><i class="fas fa-sort-amount-down" style="color: red;"></i></th>
+                                <td>0000</td>
+                                <td>0</td>
+                            </tr>
+                            <?php
+                                for ($i=0; $i <= 7; $i++) {
+                                    $number = $i+1;
+                                    $length = 4;
+                                    $string = substr(str_repeat(0, $length).$number, - $length);
+                                    echo 
+                                    '
+                                    <tr>
+                                    <th scope="row"><i class="fas fa-window-maximize" style="color: green;"></i></th>
+                                        <td>'.$string.'</td>
+                                        <td>***KERNEL SEBAS***</td>
+                                    </tr>
+                                    '
+                                    ;
+                                }
+                            ?>
+                            <?php
+                                for ($i=0; $i < count($lista_completa); $i++) {
+                                    $number = $i+7;
+                                    $length = 4;
+                                    $string = substr(str_repeat(0, $length).$number, - $length);
+                                    echo 
+                                    '
+                                    <tr>
+                                        <th scope="row"><i class="fas fa-file-code" style="color: yellow;"></i></th>
+                                        <td>'.$string.'</td>
+                                        <td>'.$lista_completa[$i].'</td>
+                                    </tr>
+                                    '
+                                    ;
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-12 col-md-12 col-lg-7 col-xl-7">
+                    <p class="fs-5 mb-0 p-2 d-flex justify-content-center" style="background-color:#C5E8EF">VARIABLES</p>
+                    <table class="table table-info table-striped shadow">
+                        <thead>
+                            <tr>
+                                <th scope="col">Posición</th>
+                                <th scope="col">Instrucción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                for ($i=0; $i < count($lista_ignorada_comentarios); $i++) {
+                                    $number = $i;
+                                    $length = 4;
+                                    $string = substr(str_repeat(0, $length).$number, - $length);
+                                    echo 
+                                    '
+                                    <tr>
+                                        <td scope="row">'.$string.'</td>
+                                        <td>'.$lista_ignorada_comentarios[$i].'</td>
+                                    </tr>
+                                    '
+                                    ;
+                                }
+                            ?>
+                        </tbody>
+                    </table>
  
-        $dir = "carpeta_archivo/";
-        $listDir = dirToArray($dir);
-        echo $listDir[0];
-        echo $listDir[1];
- 
-    ?>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <table class="table table-dark table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
