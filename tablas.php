@@ -40,7 +40,7 @@
     </table>
 <?php } ?>
 <!-- MEMORIA PRINCIPAL -->
-<?php function tabla_memoriaprincipal($lista_completa, $kernel, $lista_variables, $lista_variables_valor){ ?>
+<?php function tabla_memoriaprincipal($lista_completa, $kernel, $lista_variables, $lista_variables_valor, $acumulador){ ?>
     <p class="fs-5 mb-0 p-2 d-flex justify-content-center" style="background-color: #212529; color:white">MEMORIA PRINCIPAL</p>
     <div class="table-wrapper-scroll-y my-custom-scrollbar shadow fs-6">
         <table class="table table-dark table-striped shadow">
@@ -55,7 +55,7 @@
                 <tr>
                     <th scope="row"><i class="fas fa-layer-group fa-lg" style="color: red;"></i></th>
                     <td>0000</td>
-                    <td>0</td>
+                    <td><?php echo $acumulador ?></td>
                 </tr>
                 <?php
                     for ($i=0; $i < $kernel; $i++) {
@@ -164,7 +164,6 @@
 <?php } ?>
 <!-- VARIABLES -->
 <?php function tabla_variables($lista_variables, $lista_completa, $kernel, $lista_programas){ ?>
-    <p class="fs-5 mb-0 p-2 d-flex justify-content-center" style="background-color:#C5E8EF">VARIABLES</p>
     <table class="table table-info table-striped shadow">
         <thead>
             <tr>
@@ -197,7 +196,6 @@
 <?php } ?>
 <!-- ETIQUETAS -->
 <?php function tabla_etiquetas($lista_etiquetas, $kernel, $lista_etiquetas_posicion){ ?>
-    <p class="fs-5 mb-0 p-2 d-flex justify-content-center" style="background-color:#C5E8EF">ETIQUETAS</p>
     <table class="table table-info table-striped shadow">
         <thead>
             <tr>

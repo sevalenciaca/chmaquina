@@ -14,17 +14,18 @@
     <link rel="icon" href="img/favicon.ico">
 </head>
 <body>
+    <?php $acumulador = 0; ?>
     <?php include("navbar.php"); ?>
     <?php include("mensajevalidacion.php"); ?>
     <?php include("funcionesauxiliares.php"); ?>
     <?php include("lecturarchivo.php"); ?>
+    <?php include("ejecutar.php"); ?>
     <?php include("maquinas.php"); ?>
     <?php include("tablas.php"); ?>
+    <?php include("operaciones.php"); ?>
     <div class="container">
         <div class="row">
             <?php
-                
-                $acumulador = 0;
                 $is_empty = (bool) (count(scandir($dir)) == 2);
                 if ($is_empty==false) {
                     // $velocidad = $_POST['velocidad'];
@@ -78,11 +79,11 @@
                         }
                     }
                     else{
-                        validacion_extrema($lista_programas, $lista_completa, $lista_ignorada_comentarios, $lista_variables, $lista_etiquetas, $kernel, $lista_etiquetas_posicion, $lista_variables_valor);
+                        validacion_extrema($lista_programas, $lista_completa, $lista_ignorada_comentarios, $lista_variables, $lista_etiquetas, $kernel, $lista_etiquetas_posicion, $lista_variables_valor, $acumulador);
                     }
                 }
             ?>
-            <?php function validacion_extrema($lista_programas, $lista_completa, $lista_ignorada_comentarios, $lista_variables, $lista_etiquetas, $kernel, $lista_etiquetas_posicion, $lista_variables_valor) { ?>
+            <?php function validacion_extrema($lista_programas, $lista_completa, $lista_ignorada_comentarios, $lista_variables, $lista_etiquetas, $kernel, $lista_etiquetas_posicion, $lista_variables_valor, $acumulador) { ?>
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-md-12 col-lg-8 col-xl-8">
@@ -98,7 +99,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-12 col-lg-4 col-xl-4">
-                            <?php tabla_memoriaprincipal($lista_completa, $kernel, $lista_variables, $lista_variables_valor); ?>
+                            <?php tabla_memoriaprincipal($lista_completa, $kernel, $lista_variables, $lista_variables_valor, $acumulador); ?>
                             <div class="mt-3">
                                 <?php tabla_comentarios($lista_ignorada_comentarios); ?>
                             </div>

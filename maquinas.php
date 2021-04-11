@@ -20,7 +20,7 @@
                         </div>
 
                         <div class="mt-3 ps-2" style="color:white">
-                            <strong>Acumulador: 0</strong>
+                            <strong>Acumulador: <?php echo $acumulador ?></strong>
                         </div>
                         <!-- <div class="mt-2 ps-2" style="color:white">
                             <strong>PC: ...</strong>
