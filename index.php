@@ -29,6 +29,10 @@
                 if ($is_empty==false) {
                     // $velocidad = $_POST['velocidad'];
                     $memoria = (isset($_POST['memoria'])) ? $_POST['memoria'] : '';
+                    if ($memoria=='') {
+                        // Por defecto
+                        $memoria = 101;
+                    }
                     // var_dump($array_memoria);
                     $kernel = (isset($_POST['kernel'])) ? $_POST['kernel'] : '';
                     if ($kernel=='') {
@@ -46,17 +50,13 @@
                     foreach ($lista_variables_valor as $cadena) {
                         array_push($array_memoria, $cadena);
                     }
-
                     if ($memoria < count($array_memoria)) {
                         echo 'Memoria llena, ya no hay espacio para más programas';
                     }else{
                         $var = $memoria - count($array_memoria);
                         for ($i=0; $i < $var-1; $i++) { 
-                            array_push($array_memoria, null);
+                            array_push($array_memoria, null );
                         }
-                        echo '<pre>';
-                        var_dump($array_memoria);
-                        echo '<pre>';
                     }
                     
                     if (count($lista_programas)-1<=0) {
