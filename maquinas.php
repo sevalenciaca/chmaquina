@@ -16,7 +16,7 @@
 
                         <div class="input-group mt-3">
                             <span class="input-group-text"><strong>Kernel</strong></span>
-                            <input type="number" min="0" max="9999" value="0" name="kernel" class="form-control">
+                            <input type="number" min="0" max="9999" value="49" name="kernel" class="form-control">
                         </div>
 
                         <div class="mt-3 ps-2" style="color:white">
@@ -24,6 +24,9 @@
                         </div>
                         <div class="mt-2 ps-2" style="color:white">
                             <strong>PC: ...</strong>
+                        </div>
+                        <div class="mt-2 ps-2" style="color:white">
+                            <input class="btn btn-success" type="submit" value="Ejecutar">
                         </div>
                     </form>
                 </div>

@@ -40,7 +40,7 @@
     </table>
 <?php } ?>
 <!-- MEMORIA PRINCIPAL -->
-<?php function tabla_memoriaprincipal($lista_completa, $kernel){ ?>
+<?php function tabla_memoriaprincipal($lista_completa, $kernel, $lista_variables, $lista_variables_valor){ ?>
     <p class="fs-5 mb-0 p-2 d-flex justify-content-center" style="background-color: #212529; color:white">MEMORIA PRINCIPAL</p>
     <table class="table table-dark table-striped shadow">
         <thead>
@@ -71,8 +71,6 @@
                     '
                     ;
                 }
-            ?>
-            <?php
                 for ($i=0; $i < count($lista_completa); $i++) {
                     $number = $i+$kernel+1;
                     $length = 4;
@@ -83,6 +81,21 @@
                         <th scope="row"><i class="fas fa-file-code" style="color: yellow;"></i></th>
                         <td>'.$string.'</td>
                         <td>'.$lista_completa[$i].'</td>
+                    </tr>
+                    '
+                    ;
+                }
+
+                for ($i=0; $i < count($lista_variables); $i++) {
+                    $number = $i+$kernel+1+count($lista_completa);
+                    $length = 4;
+                    $string = substr(str_repeat(0, $length).$number, - $length);
+                    echo 
+                    '
+                    <tr>
+                        <th scope="row"><i class="fas fa-file-code" style="color: #ff7700;"></i></th>
+                        <td>'.$string.'</td>
+                        <td>'.$lista_variables_valor[$i].'</td>
                     </tr>
                     '
                     ;
@@ -147,7 +160,7 @@
     </table>
 <?php } ?>
 <!-- VARIABLES -->
-<?php function tabla_variables($lista_variables, $lista_completa, $kernel){ ?>
+<?php function tabla_variables($lista_variables, $lista_completa, $kernel, $lista_programas){ ?>
     <p class="fs-5 mb-0 p-2 d-flex justify-content-center" style="background-color:#C5E8EF">VARIABLES</p>
     <table class="table table-info table-striped shadow">
         <thead>
@@ -158,15 +171,19 @@
         </thead>
         <tbody>
             <?php
-                for ($i=0; $i <= count($lista_variables)-1; $i++) {
+                for ($j=0; $j < count($lista_programas); $j++) {
+                    $number2 = $j;
+                }
+                for ($i=0; $i < count($lista_variables); $i++) {
                     $number = $i+$kernel+1+count($lista_completa);
                     $length = 4;
                     $string = substr(str_repeat(0, $length).$number, - $length);
+                    $proceso = substr(str_repeat(0, $length).$number2, - $length);
                     echo 
                     '
                     <tr>
                         <td scope="row">'.$string.'</td>
-                        <td>'.$lista_variables[$i].'</td>
+                        <td>'.$proceso.' '.$lista_variables[$i].'</td>
                     </tr>
                     '
                     ;
@@ -176,7 +193,7 @@
     </table>
 <?php } ?>
 <!-- ETIQUETAS -->
-<?php function tabla_etiquetas($lista_etiquetas){ ?>
+<?php function tabla_etiquetas($lista_etiquetas, $kernel, $lista_etiquetas_posicion){ ?>
     <p class="fs-5 mb-0 p-2 d-flex justify-content-center" style="background-color:#C5E8EF">ETIQUETAS</p>
     <table class="table table-info table-striped shadow">
         <thead>
@@ -187,8 +204,9 @@
         </thead>
         <tbody>
             <?php
-                for ($i=0; $i <= count($lista_etiquetas)-1; $i++) {
-                    $number = $i;
+                for ($i=0; $i < count($lista_etiquetas); $i++) {
+                    $posicion = (int)$lista_etiquetas_posicion[$i];
+                    $number = $posicion+$kernel;
                     $length = 4;
                     $string = substr(str_repeat(0, $length).$number, - $length);
                     echo 

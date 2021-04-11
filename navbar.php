@@ -27,7 +27,7 @@
                     </ul>
                 </li>
                 <li class="d-flex align-items-center nav-item">
-                    <button type="button" class="btn btn-secondary btn-sm" form="form1"><i class="fas fa-play"></i> Ejecutar</button>
+                    <button type="button" class="nav-link btn btn-link text-decoration-none" form="form1"><i class="fas fa-play"></i> Ejecutar</button>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fas fa-pause"></i> Pausar</a>
@@ -42,7 +42,10 @@
                     <a class="nav-link" href="#"><i class="fas fa-book"></i> Instrucciones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/eliminar.php"><i class="fas fa-sign-out-alt"></i> Salir (Eliminar)</a>
+                    <a class="nav-link" href="/eliminar.php"><i class="fas fa-trash"></i> Eliminar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Salir</a>
                 </li>
             </ul>
         </div>
