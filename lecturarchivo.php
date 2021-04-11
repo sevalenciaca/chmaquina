@@ -15,7 +15,7 @@
         // Abrir archivo
         while (!feof($archivo)) {
             // Se lee cada una de las lineas del archivo y se almacenan en la variable "linea"
-            $linea = quitar_tildes(fgets($archivo));
+            $linea = quitar_tildes(trim(fgets($archivo)));
             // Validación funcion para ignorar las lineas que tengan '//' y posteriormente almacenarlas en el arreglo "lista_ignore"
             if (stristr($linea, '//')) {
                 $lista_ignorada_comentarios[] = $linea;

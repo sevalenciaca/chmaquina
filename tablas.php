@@ -42,103 +42,106 @@
 <!-- MEMORIA PRINCIPAL -->
 <?php function tabla_memoriaprincipal($lista_completa, $kernel, $lista_variables, $lista_variables_valor){ ?>
     <p class="fs-5 mb-0 p-2 d-flex justify-content-center" style="background-color: #212529; color:white">MEMORIA PRINCIPAL</p>
-    <table class="table table-dark table-striped shadow">
-        <thead>
-            <tr>
-                <th scope="col"></th>
-                <th scope="col">Direct</th>
-                <th scope="col">Contenido</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row"><i class="fas fa-sort-amount-down" style="color: red;"></i></th>
-                <td>0000</td>
-                <td>0</td>
-            </tr>
-            <?php
-                for ($i=0; $i < $kernel; $i++) {
-                    $number = $i+1;
-                    $length = 4;
-                    $string = substr(str_repeat(0, $length).$number, - $length);
-                    echo 
-                    '
-                    <tr>
-                    <th scope="row"><i class="fas fa-window-maximize" style="color: green;"></i></th>
+    <div class="table-wrapper-scroll-y my-custom-scrollbar shadow fs-6">
+        <table class="table table-dark table-striped shadow">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Direct</th>
+                    <th scope="col">Contenido</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"><i class="fas fa-layer-group fa-lg" style="color: red;"></i></th>
+                    <td>0000</td>
+                    <td>0</td>
+                </tr>
+                <?php
+                    for ($i=0; $i < $kernel; $i++) {
+                        $number = $i+1;
+                        $length = 4;
+                        $string = substr(str_repeat(0, $length).$number, - $length);
+                        echo 
+                        '
+                        <tr>
+                        <th scope="row"><i class="fas fa-sd-card fa-lg" style="color: green;"></i></th>
                         <td>'.$string.'</td>
                         <td>***RESERVADO KERNEL***</td>
-                    </tr>
-                    '
-                    ;
-                }
-                for ($i=0; $i < count($lista_completa); $i++) {
-                    $number = $i+$kernel+1;
-                    $length = 4;
-                    $string = substr(str_repeat(0, $length).$number, - $length);
-                    echo 
-                    '
-                    <tr>
-                        <th scope="row"><i class="fas fa-file-code" style="color: yellow;"></i></th>
+                        </tr>
+                        '
+                        ;
+                    }
+                    for ($i=0; $i < count($lista_completa); $i++) {
+                        $number = $i+$kernel+1;
+                        $length = 4;
+                        $string = substr(str_repeat(0, $length).$number, - $length);
+                        echo 
+                        '
+                        <tr>
+                        <th scope="row"><i class="fas fa-file-code fa-lg" style="color: yellow;"></i></th>
                         <td>'.$string.'</td>
                         <td>'.$lista_completa[$i].'</td>
-                    </tr>
-                    '
-                    ;
-                }
-
-                for ($i=0; $i < count($lista_variables); $i++) {
-                    $number = $i+$kernel+1+count($lista_completa);
-                    $length = 4;
-                    $string = substr(str_repeat(0, $length).$number, - $length);
-                    echo 
-                    '
-                    <tr>
-                        <th scope="row"><i class="fas fa-file-code" style="color: #ff7700;"></i></th>
+                        </tr>
+                        '
+                        ;
+                    }
+                    
+                    for ($i=0; $i < count($lista_variables); $i++) {
+                        $number = $i+$kernel+1+count($lista_completa);
+                        $length = 4;
+                        $string = substr(str_repeat(0, $length).$number, - $length);
+                        echo 
+                        '
+                        <tr>
+                        <th scope="row"><i class="fas fa-file-upload fa-lg" style="color: #ff7700;"></i></th>
                         <td>'.$string.'</td>
                         <td>'.$lista_variables_valor[$i].'</td>
-                    </tr>
-                    '
-                    ;
-                }
-            ?>
-        </tbody>
-    </table>
+                        </tr>
+                        '
+                        ;
+                    }
+                ?>
+            </tbody>
+        </table>
+    </div>
 <?php } ?>
 <!-- INSTRUCCIONES -->
 <?php function tabla_instrucciones($lista_completa, $kernel){ ?>
-    <table class="table table-light table-striped shadow">
-        <thead>
-            <tr>
-                <th scope="col">Posición</th>
-                <th scope="col">Instrucción</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                for ($i=0; $i < count($lista_completa); $i++) {
-                    $number = $i+$kernel+1;
-                    $length = 4;
-                    $string = substr(str_repeat(0, $length).$number, - $length);
-                    echo 
-                    '
-                    <tr>
-                        <td scope="row">'.$string.'</td>
-                        <td>'.$lista_completa[$i].'</td>
-                    </tr>
-                    '
-                    ;
-                }
-            ?>
-        </tbody>
-    </table>
+    <div class="table-wrapper-scroll-y2 my-custom-scrollbar2">
+        <table class="table table-light table-striped shadow">
+            <thead>
+                <tr>
+                    <th scope="col">Posición</th>
+                    <th scope="col">Instrucción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    for ($i=0; $i < count($lista_completa); $i++) {
+                        $number = $i+$kernel+1;
+                        $length = 4;
+                        $string = substr(str_repeat(0, $length).$number, - $length);
+                        echo 
+                        '
+                        <tr>
+                            <td scope="row">'.$string.'</td>
+                            <td>'.$lista_completa[$i].'</td>
+                        </tr>
+                        '
+                        ;
+                    }
+                ?>
+            </tbody>
+        </table>
+    </div>
 <?php } ?>
 <!-- COMENTARIOS -->
 <?php function tabla_comentarios($lista_ignorada_comentarios){ ?>
-    <p class="fs-5 mb-0 p-2 d-flex justify-content-center" style="background-color:#FFF3CD">COMENTARIOS (LINEAS IGNORADAS)</p>
     <table class="table table-warning table-striped shadow">
         <thead>
             <tr>
-                <th scope="col">Comentario</th>
+                <th scope="col">Comentarios (Lineas ignoradas)</th>
             </tr>
         </thead>
         <tbody>

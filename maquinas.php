@@ -22,11 +22,11 @@
                         <div class="mt-3 ps-2" style="color:white">
                             <strong>Acumulador: 0</strong>
                         </div>
-                        <div class="mt-2 ps-2" style="color:white">
+                        <!-- <div class="mt-2 ps-2" style="color:white">
                             <strong>PC: ...</strong>
-                        </div>
-                        <div class="mt-2 ps-2" style="color:white">
-                            <input class="btn btn-success" type="submit" value="Ejecutar">
+                        </div> -->
+                        <div class="mt-2" style="color:white">
+                            <input class="btn btn-link text-decoration-none fw-bold" type="submit" value="Cargar" style="color: white;"/><i class="fas fa-download"></i>
                         </div>
                     </form>
                 </div>

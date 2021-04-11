@@ -26,8 +26,8 @@
                         <!-- <li><a class="dropdown-item" href="#"><i class="fas fa-upload"></i> Cargar</a></li> -->
                     </ul>
                 </li>
-                <li class="d-flex align-items-center nav-item">
-                    <button type="button" class="nav-link btn btn-link text-decoration-none" form="form1"><i class="fas fa-play"></i> Ejecutar</button>
+                <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-play"></i> Ejecutar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fas fa-pause"></i> Pausar</a>

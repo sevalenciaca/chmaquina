@@ -23,11 +23,12 @@
     <div class="container">
         <div class="row">
             <?php
+                
+                $acumulador = 0;
                 $is_empty = (bool) (count(scandir($dir)) == 2);
                 if ($is_empty==false) {
                     // $velocidad = $_POST['velocidad'];
                     $memoria = (isset($_POST['memoria'])) ? $_POST['memoria'] : '';
-                    
                     // var_dump($array_memoria);
                     $kernel = (isset($_POST['kernel'])) ? $_POST['kernel'] : '';
                     if ($kernel=='') {
@@ -35,13 +36,29 @@
                         $z = 4;
                         $kernel = (10*$z)+9;
                     }
-
-                    for ($i=0; $i <= $memoria; $i++) { 
-                        $array_memoria[] = 0;
-                        $number = $array_memoria[$i];
-                        $length = 4;
-                        $string = substr(str_repeat(0, $length).$number, - $length);
+                    $array_memoria[0] = $acumulador;
+                    for ($j=1; $j <= $kernel; $j++) {
+                        $array_memoria[$j] = '***RESERVADO KERNEL***';
                     }
+                    foreach ($lista_completa as $cadena) {
+                        array_push($array_memoria, $cadena);
+                    }
+                    foreach ($lista_variables_valor as $cadena) {
+                        array_push($array_memoria, $cadena);
+                    }
+
+                    if ($memoria < count($array_memoria)) {
+                        echo 'Memoria llena, ya no hay espacio para más programas';
+                    }else{
+                        $var = $memoria - count($array_memoria);
+                        for ($i=0; $i < $var-1; $i++) { 
+                            array_push($array_memoria, null);
+                        }
+                        echo '<pre>';
+                        var_dump($array_memoria);
+                        echo '<pre>';
+                    }
+                    
                     if (count($lista_programas)-1<=0) {
                         $posicion = 0;
                     }else {
@@ -77,12 +94,14 @@
                                 <div class="col-12 col-md-12 col-lg-6 col-xl-6">
                                     <?php tabla_variables($lista_variables, $lista_completa, $kernel, $lista_programas); ?>
                                     <?php tabla_etiquetas($lista_etiquetas, $kernel, $lista_etiquetas_posicion); ?>
-                                    <?php tabla_comentarios($lista_ignorada_comentarios); ?>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-md-12 col-lg-4 col-xl-4">
                             <?php tabla_memoriaprincipal($lista_completa, $kernel, $lista_variables, $lista_variables_valor); ?>
+                            <div class="mt-3">
+                                <?php tabla_comentarios($lista_ignorada_comentarios); ?>
+                            </div>
                         </div>
                     </div>
                 </div>
