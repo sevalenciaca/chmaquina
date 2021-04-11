@@ -1,5 +1,5 @@
 <!-- CH PROGRAMAS -->
-<?php function tabla_chprogramas($lista_programas){ ?>
+<?php function tabla_chprogramas($lista_programas, $lista_completa, $lista_variables, $kernel){ ?>
     <p class="fs-5 mb-0 p-2 d-flex justify-content-center" style="background-color: #212529; color:white">CH PROGRAMAS</p>
     <table class="table table-dark table-striped shadow">
         <thead>
@@ -14,6 +14,10 @@
         </thead>
         <tbody>
             <?php
+                $no_instrucciones = count($lista_completa) + count($lista_variables);
+                $RB = $kernel+1;
+                $RLC = $kernel + count($lista_completa);
+                $RLP = $kernel + $no_instrucciones;
                 for ($i=0; $i < count($lista_programas); $i++) {
                     $number = $i;
                     $length = 4;
@@ -23,10 +27,10 @@
                     <tr>
                         <td scope="row">'.$string.'</td>
                         <td>'.$lista_programas[$i].'</td>
-                        <td>28</td>
-                        <td>11</td>
-                        <td>32</td>
-                        <td>38</td>
+                        <td>'.$no_instrucciones.'</td>
+                        <td>'.$RB.'</td>
+                        <td>'.$RLC.'</td>
+                        <td>'.$RLP.'</td>
                     </tr>
                     '
                     ;
@@ -62,7 +66,7 @@
                     <tr>
                     <th scope="row"><i class="fas fa-window-maximize" style="color: green;"></i></th>
                         <td>'.$string.'</td>
-                        <td>***KERNEL SEBAS***</td>
+                        <td>***RESERVADO KERNEL***</td>
                     </tr>
                     '
                     ;

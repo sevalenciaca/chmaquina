@@ -4,24 +4,28 @@
             <div class="position-relative">
                 <img class="p-2 img-fluid" src="img/cpu.png" alt="CPU">
                 <div class="p-4 position-absolute top-0 end-0 start-0 botton-0">
-                    <label for="customRange1" class="form-label" style="color:white">
-                        <strong>Velocidad</strong>
-                    </label>
-                    <input type="range" class="form-range" id="customRange1">
-                    <div class="input-group mt-1">
-                        <span class="input-group-text" id="inputGroup-sizing-default"><strong>Memoria</strong></span>
-                        <input type="number" min="0" max="9999" value="0" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    </div>
-                    <div class="input-group mt-3">
-                        <span class="input-group-text" id="inputGroup-sizing-default"><strong>Kernel</strong></span>
-                        <input type="number" min="0" max="100" value="0" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    </div>
-                    <div class="mt-3 ps-2" style="color:white">
-                        <strong>Acumulador: 0</strong>
-                    </div>
-                    <div class="mt-2 ps-2" style="color:white">
-                        <strong>PC: ...</strong>
-                    </div>
+                    <form id="form1" name="formulario" method="post" action="index.php">
+                        <label class="form-label" style="color:white">
+                            <strong>Velocidad</strong>
+                        </label>
+                        <input type="range" class="form-range" id="customRange1" name="velocidad">
+                        <div class="input-group mt-1">
+                            <span class="input-group-text"><strong>Memoria</strong></span>
+                            <input type="number" min="0" max="9999" value="0" name="memoria" class="form-control">
+                        </div>
+
+                        <div class="input-group mt-3">
+                            <span class="input-group-text"><strong>Kernel</strong></span>
+                            <input type="number" min="0" max="9999" value="0" name="kernel" class="form-control">
+                        </div>
+
+                        <div class="mt-3 ps-2" style="color:white">
+                            <strong>Acumulador: 0</strong>
+                        </div>
+                        <div class="mt-2 ps-2" style="color:white">
+                            <strong>PC: ...</strong>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
