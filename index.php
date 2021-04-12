@@ -15,14 +15,13 @@
 </head>
 <body>
     <?php $acumulador = 0; ?>
-    <?php include("navbar.php"); ?>
+    <?php include("vistas/navbar.php"); ?>
     <?php include("mensajevalidacion.php"); ?>
     <?php include("funcionesauxiliares.php"); ?>
     <?php include("lecturarchivo.php"); ?>
-    <?php include("ejecutar.php"); ?>
-    <?php include("maquinas.php"); ?>
+    <?php include("vistas/ejecutar.php"); ?>
+    <?php include("vistas/maquinas.php"); ?>
     <?php include("tablas.php"); ?>
-    <?php include("operaciones.php"); ?>
     <div class="container">
         <div class="row">
             <?php
@@ -74,7 +73,7 @@
                     }
                     elseif ($cont != 0) {
                         echo 'SINTAXIS INCORRECTA. Se encontraron errores de sintaxis en el archivo en las siguientes lineas';
-                        for ($j=0; $j < count($errores) ; $j++) { 
+                        for ($j=0; $j < count($errores) ; $j++) {
                             var_dump($errores[$j]);
                         }
                     }
@@ -109,7 +108,7 @@
             <?php } ?>
         </div>
     </div>
-    <?php include("footer.php"); ?>
+    <?php include("vistas/footer.php"); ?>
 </body>
 <!-- Bootstrap js -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>

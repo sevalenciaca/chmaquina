@@ -72,6 +72,7 @@
             // echo '</pre>';
 
             fclose($archivo);
+            
             $cont = 0;
             $errores = array();
             for ($i=0; $i < count($lista_operacion) ; $i++) { 

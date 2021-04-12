@@ -42,7 +42,7 @@
                     <a class="nav-link" href="#"><i class="fas fa-book"></i> Instrucciones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/eliminar.php"><i class="fas fa-trash"></i> Eliminar</a>
+                    <a class="nav-link" href="/botones/eliminar.php"><i class="fas fa-trash"></i> Eliminar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Salir</a>
