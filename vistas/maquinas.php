@@ -5,31 +5,30 @@
                 <img class="p-2 img-fluid" src="img/cpu.png" alt="CPU">
                 <div class="p-4 position-absolute top-0 end-0 start-0 botton-0">
 
-                    <form id="formCPU" name="formulario" method="post" action="datoscpu.php">
+                    <form id="formCPU" name="formulario" method="post" action="botones/ejecutar.php">
                         <label class="form-label" style="color:white">
                             <strong>Velocidad</strong>
                         </label>
                         <input type="range" class="form-range" name="velocidad">
                         <div class="input-group mt-3">
                             <span class="input-group-text"><strong>Memoria</strong></span>
-                            <input type="number" min="0" max="9999" value="<?php $var = (isset($_POST['memoria'])) ? $memoria : 0; echo $var; ?>" name="memoria" class="form-control">
+                            <input type="number" min="0" max="9999" value="0" name="memoria" class="form-control">
                         </div>
 
                         <div class="input-group mt-3">
                             <span class="input-group-text"><strong>Kernel</strong></span>
-                            <input type="number" min="0" max="9999" value="<?php $var = (isset($kernel)) ? $kernel : 49; echo $var; ?>" name="kernel" class="form-control">
+                            <input type="number" min="0" max="9999" value="49" name="kernel" class="form-control">
                         </div>
-
-                        <div class="mt-4 ps-2 d-flex justify-content-center" style="color:white">
-                            <strong>ACUMULADOR: <?php echo $acumulador ?></strong>
-                        </div>
-                        <!-- <div class="mt-2 ps-2" style="color:white">
-                            <strong>PC: ...</strong>
-                        </div> -->
-                        <div class="mt-0 d-flex justify-content-center" style="color:white">
+    
+                        <!-- <div class="mt-0 d-flex justify-content-center" style="color:white">
                             <input class="btn btn-link text-decoration-none fw-bold" type="submit" value="CARGAR DATOS" style="color: white;"/>
-                        </div>
+                        </div> -->
+
                     </form>
+
+                    <div class="mt-4 ps-2 d-flex justify-content-center" style="color:white">
+                        <strong>ACUMULADOR: <?php echo $acumulador ?></strong>
+                    </div>
 
                 </div>
             </div>

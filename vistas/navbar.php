@@ -15,7 +15,8 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-play"></i> Ejecutar</a>
+                    <button class="nav-link btn btn-link" type="submit" form="formCPU"><i class="fas fa-play"></i> Ejecutar</button>
+                    <!-- <a class="nav-link" form=><i class="fas fa-play"></i> Ejecutar</a> -->
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fas fa-pause"></i> Pausar</a>
