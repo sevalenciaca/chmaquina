@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
-    <div class="container">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 shadow">
+    <div class="container d-flex justify-content-center">
         <a class="navbar-brand"><i class="fas fa-laptop-code"></i> CH MÁQUINA</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -11,23 +11,11 @@
                         <i class="far fa-file-alt"></i> Archivo
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li>
-                            <form method="POST" action="upload.php" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <div class="p-2">
-                                        <input type="file" class="form-control-file" name="uploadedFile"/>
-                                    </div>
-                                    <div class="p-2">
-                                        <input type="submit" name="uploadBtn" value="Cargar"/>
-                                    </div>
-                                </div>
-                            </form>
-                        </li>
-                        <!-- <li><a class="dropdown-item" href="#"><i class="fas fa-upload"></i> Cargar</a></li> -->
+                        <li> <?php include('botones/archivo.php') ?> </li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-play"></i> Ejecutar</a>
+                    <a class="nav-link" href="#"><i class="fas fa-play"></i> Ejecutar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fas fa-pause"></i> Pausar</a>
@@ -42,7 +30,7 @@
                     <a class="nav-link" href="#"><i class="fas fa-book"></i> Instrucciones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/botones/eliminar.php"><i class="fas fa-trash"></i> Eliminar</a>
+                    <a class="nav-link" href="botones/eliminar.php"><i class="fas fa-trash"></i> Eliminar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Salir</a>

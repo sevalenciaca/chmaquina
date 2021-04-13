@@ -1,5 +1,6 @@
 <?php
 
+$permitidas = array("cargue", "almacene", "nueva", "lea", "sume", "reste", "multiplique", "divida", "potencia", "modulo", "concatene", "elimine", "extraiga", "y", "o", "no", "muestre", "imprima", "vaya", "vayasi", "etiqueta", "retorne", "xxx");
 $directorio = 'carpeta_archivo';
 $array_programas = directorios_array($directorio);
 $nombre_archivo = $array_programas[0];
@@ -44,15 +45,6 @@ function lectura_archivo2($directorio, $nombre_archivo) {
     return $matriz;
 }
 
-function nueva ($matriz_variables) {
-    for ($i=0; $i < count($matriz_variables); $i++) { 
-        if (!isset($matriz_variables[$i][3])) {
-            $matriz_variables[$i][3] = (string)0;
-        }
-    }
-    return $matriz_variables;
-}
-
 function filtro ($matriz_instrucciones, $palabra) {
     for ($i=0; $i < count($matriz_instrucciones); $i++) { 
         if ($matriz_instrucciones[$i][0] == $palabra) {
@@ -60,6 +52,15 @@ function filtro ($matriz_instrucciones, $palabra) {
         }
     }
     return $matriz;
+}
+
+function nueva ($matriz_variables) {
+    for ($i=0; $i < count($matriz_variables); $i++) { 
+        if (!isset($matriz_variables[$i][3])) {
+            $matriz_variables[$i][3] = (string)0;
+        }
+    }
+    return $matriz_variables;
 }
 
 function otros_archivos ($matriz_instrucciones_sinseparar, $matriz_variables_nueva) {
@@ -127,9 +128,38 @@ function directorios_array($dir) {
     return $lista_programas;
 }
 
+function validacion_directorio($directorio) {
+    $carpeta = @scandir($directorio);
+    if (count($carpeta) > 2){
+        return TRUE;
+    }else{
+        return FALSE;
+    }
+}
+
+// if (is_dir('folder')) {
+//     //Escaneamos el directorio
+//     $carpeta = @scandir('folder');
+//     //Miramos si existen archivos
+//     if (count($carpeta) > 2){
+//         echo 'El directorio tiene archivos';
+//         //Miramos si existe el archivo pasado como parámetro
+//         if (file_exists('folder/index.php')) 
+//             echo 'El archivo existe';
+//         else
+//             echo 'El archivo no existe';
+//     }else{
+//         echo 'El directorio está vacío';
+//     }
+// }
+// else {
+//     echo 'El directorio no existe.';
+// }
+
 // echo '<pre>';
 // var_dump($matriz_instrucciones);
 // echo '</pre>';
+// echo validacion_directorio($directorio);
 // echo '<pre>';
 // var_dump($matriz_instrucciones_sinseparar);
 // echo '</pre>';
@@ -146,9 +176,11 @@ function directorios_array($dir) {
 // var_dump($matriz_variables_nueva);
 // echo '</pre>';
 // echo '---------------------------------------------';
-echo '<pre>';
-var_dump($array_memoria_principal);
-echo '</pre>';
+
+// echo '<pre>';
+// var_dump($array_memoria_principal);
+// echo '</pre>';
+
 // echo '---------------------------------------------';
 // echo '<pre>';
 // var_dump($otros_archivos);

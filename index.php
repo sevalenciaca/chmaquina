@@ -16,10 +16,9 @@
 <body>
     <?php $acumulador = 0; ?>
     <?php include("vistas/navbar.php"); ?>
-    <?php include("mensajevalidacion.php"); ?>
+    <?php include("validaciones/cargarchivo.php"); ?>
     <?php include("funcionesauxiliares.php"); ?>
     <?php include("lecturarchivo.php"); ?>
-    <?php include("vistas/ejecutar.php"); ?>
     <?php include("vistas/maquinas.php"); ?>
     <?php include("tablas.php"); ?>
     <div class="container">

@@ -32,21 +32,20 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Cargar'){
             // Mover el archivo cargado a la ubicación específica, en este caso a (carpeta_archivo)
             // Esta función toma dos argumentos. El primer argumento es el nombre de archivo del archivo cargado, y el segundo argumento es la ruta de destino a la que desea mover el archivo.
             if(move_uploaded_file($fileTmpPath, $dest_path)) {
-                $message ='El archivo con extensión ch se cargó correctamente';
+                $message ='El archivo con extensión .ch se cargó correctamente';
             }
             else{
                 $message = 'Hubo algún error al mover el archivo al directorio de carga. Asegúrese de que el servidor web pueda escribir en el directorio de carga.';
             }
         }
         else{
-            $message = 'Subida fallida. Solo se permite el tipo de archivo: ' . implode(',', $allowedfileExtensions);
+            $message = 'Subida fallida. Solo se permiten archivos con extensión ' . implode(',', $allowedfileExtensions);
         }
     }
     else{
-        $message = 'Hay algún error en la carga del archivo. Compruebe el siguiente error.<br>';
-        $message .= 'Error:' . $_FILES['uploadedFile']['error'];
+        $message = 'Hay algún error en la carga del archivo';
+        // $message .= 'Error:' . $_FILES['uploadedFile']['error'];
     }
 }
-
 $_SESSION['message'] = $message;
 header("Location: index.php");
