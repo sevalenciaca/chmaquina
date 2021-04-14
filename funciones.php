@@ -137,6 +137,26 @@ function validacion_directorio($directorio) {
     }
 }
 
+function validacion_sintaxis($permitidas, $matriz_instrucciones) {
+    $cont = 0;
+    $errores = array();
+    for ($i=0; $i < count($matriz_instrucciones) ; $i++) { 
+        if (!(in_array($matriz_instrucciones[$i][0], $permitidas))) {
+            $cont++;
+            $errores[] = $i;
+            return true;
+        }else {
+            return false;
+        }
+    }
+}
+
+if (validacion_sintaxis($permitidas, $matriz_instrucciones)) {
+    echo "Esta bien";
+}else {
+    echo 'Esta mal';
+}
+
 // if (is_dir('folder')) {
 //     //Escaneamos el directorio
 //     $carpeta = @scandir('folder');

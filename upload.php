@@ -44,8 +44,9 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Cargar'){
     }
     else{
         $message = 'Hay algún error en la carga del archivo';
-        // $message .= 'Error:' . $_FILES['uploadedFile']['error'];
+        $message .= 'Error:' . $_FILES['uploadedFile']['error'];
     }
 }
+
 $_SESSION['message'] = $message;
 header("Location: index.php");

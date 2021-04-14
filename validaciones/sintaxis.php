@@ -3,13 +3,6 @@
 session_start();
 $message = '';
 
-$carpeta = @scandir('carpeta_archivo');
-if (count($carpeta) > 2){
-    $message = 'ARCHIVO CARGADO';
-}else{
-    $message = 'CARGUE ARCHIVO';
-}
-
 $_SESSION['message'] = $message;
 
 session_start();

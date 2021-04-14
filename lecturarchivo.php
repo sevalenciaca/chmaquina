@@ -64,7 +64,7 @@
             // echo '</pre>';
 
             // echo '<pre>';
-            // var_dump($lista_var);
+            // var_dump($lista_operacion);
             // echo '</pre>';
 
             // echo '<pre>';
