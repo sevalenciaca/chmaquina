@@ -1,5 +1,5 @@
 <!-- CH PROGRAMAS -->
-<?php function tabla_chprogramas($array_programas){ ?>
+<?php function tabla_chprogramas($array_programas, $instrucciones_juntas, $kernel){ ?>
     <p class="fs-5 mb-0 p-2 d-flex justify-content-center" style="background-color: #212529; color:white">CH PROGRAMAS</p>
     <table class="table table-dark table-striped shadow">
         <thead>
@@ -14,19 +14,18 @@
         </thead>
         <tbody>
             <?php
-                $no_instrucciones = count($lista_completa) + count($lista_variables);
+                
+                $no_instrucciones = count($instrucciones_juntas);
                 $RB = $kernel+1;
-                $RLC = $kernel + count($lista_completa);
+                $RLC = $kernel + count($instrucciones_juntas);
                 $RLP = $kernel + $no_instrucciones;
-                for ($i=0; $i < count($lista_programas); $i++) {
-                    $number = $i;
-                    $length = 4;
-                    $string = substr(str_repeat(0, $length).$number, - $length);
+                for ($i=0; $i < count($array_programas); $i++) {
+                    $posicion = substr(str_repeat(0, 4).$i, - 4);
                     echo 
                     '
                     <tr>
-                        <td scope="row">'.$string.'</td>
-                        <td>'.$lista_programas[$i].'</td>
+                        <td scope="row">'.$posicion.'</td>
+                        <td>'.$array_programas[$i].'</td>
                         <td>'.$no_instrucciones.'</td>
                         <td>'.$RB.'</td>
                         <td>'.$RLC.'</td>
@@ -76,7 +75,7 @@
                         <tr>
                         <th scope="row"><i class="fas fa-file-code fa-lg" style="color: yellow;"></i></th>
                         <td>'.$posicion.'</td>
-                        <td>'.$array_memoria_principal[$i-1].'</td>
+                        <td>'.$array_memoria_principal[$i].'</td>
                         </tr>
                         ';
                     }

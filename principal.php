@@ -1,9 +1,11 @@
+<?php if (validacion_directorio($directorio)) { ?>
+
 <div class="container">
     <div class="row">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-8 col-xl-8">
-                    <?php //tabla_chprogramas($lista_programas, $lista_completa, $lista_variables, $kernel); ?>
+                    <?php tabla_chprogramas($array_programas, $instrucciones_juntas, $kernel); ?>
                     <div class="row">
                         <div class="col-12 col-md-12 col-lg-6 col-xl-6">
                             <?php //tabla_instrucciones($lista_completa, $kernel); ?>
@@ -24,3 +26,5 @@
         </div>
     </div>
 </div>
+
+<?php } ?>

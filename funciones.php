@@ -7,7 +7,7 @@ if (validacion_directorio($directorio)) {
     $array_programas = directorios_array($directorio);
     $nombre_archivo = $array_programas[0];
     $acumulador = 0;
-    $kernel = 10; //(10*4)+9;
+    $kernel = 25; //(10*4)+9;
     $memoria = 100;
     $matriz_instrucciones = lectura_archivo($directorio, $nombre_archivo);
     $matriz_instrucciones_sinseparar = lectura_archivo2($directorio, $nombre_archivo);
