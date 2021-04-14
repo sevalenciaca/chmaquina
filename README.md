@@ -18,6 +18,7 @@
 
 ## Repositorio proyecto:
 > El repositorio del proyecto esta alojado en GitHub en el siguiente enlace: https://github.com/sevalenciaca/chmaquina
+> Como el proyecto maneja control de versionamiento, en github se puede observar la bitacora del progreso del codigo, fecha y hora exacta de los commits, es decir, cambios que se le hacen al proyecto.
 
 > © Copyright 2021 - Sebastian Valencia Carvajal - Todos los derechos reservados - 0916066 - sevalenciaca@unal.edu.co
 
