@@ -18,9 +18,9 @@ if (validacion_directorio($directorio)) {
     $instrucciones_juntas = programas($directorio, $array_programas, $matriz_variables_nueva);
     $array_memoria_principal = memoria_principal($acumulador, $kernel, $memoria, $instrucciones_juntas);
     $matriz_sintaxis = sintaxis($matriz_instrucciones);
-    echo '<pre>';
-    var_dump($array_memoria_principal);
-    echo '</pre>';
+    // echo '<pre>';
+    // var_dump($array_memoria_principal);
+    // echo '</pre>';
 }
 
 function validacion_directorio($directorio) {
@@ -108,7 +108,7 @@ function memoria_principal ($acumulador, $kernel, $memoria, $instrucciones_junta
     $var = 1+$kernel+count($instrucciones_juntas);
     $array[0] = $acumulador;
     for ($i=0; $i < $kernel; $i++) {
-        array_push($array, '***RESERVADO KERNEL***');
+        array_push($array, '*** KERNEL ***');
     }
     for ($i=0; $i < count($instrucciones_juntas); $i++) {
         array_push($array, $instrucciones_juntas[$i]);
@@ -177,26 +177,18 @@ function sintaxis($matriz_instrucciones) {
 //     echo 'El directorio no existe.';
 // }
 
-// echo '<pre>';
-// var_dump($matriz_instrucciones);
-// echo '</pre>';
-// echo validacion_directorio($directorio);
-// echo '<pre>';
-// var_dump($matriz_instrucciones_sinseparar);
-// echo '</pre>';
-// echo '---------------------------------------------';
-
-// echo '---------------------------------------------';
-
-// echo '---------------------------------------------';
-// echo '<pre>';
-// var_dump($otros_archivos);
-// echo '</pre>';
-// echo '<pre>';
-// var_dump($instrucciones_juntas);
-// echo '</pre>';
-// echo '<pre>';
-// var_dump($otros_archivos);
-// echo '</pre>';
+// $archivo = fopen('carpeta_archivo/'.$lista_programas[$posicion],'r');
+// $nombre_fichero = 'carpeta_archivo/'.$lista_programas[$posicion];
+// $vacio=(!file_exists($nombre_fichero) || !filesize($nombre_fichero)) ? FALSE : TRUE;
+// fclose($archivo);
+// if (!$vacio) {
+//     echo 'El archivo: '.$lista_programas[0].' está vacío';
+// }
+// elseif ($cont != 0) {
+//     echo 'SINTAXIS INCORRECTA. Se encontraron errores de sintaxis en el archivo en las siguientes lineas';
+//     for ($j=0; $j < count($errores) ; $j++) {
+//         var_dump($errores[$j]);
+//     }
+// }
 
 ?>

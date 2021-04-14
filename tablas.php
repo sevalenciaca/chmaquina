@@ -1,5 +1,5 @@
 <!-- CH PROGRAMAS -->
-<?php function tabla_chprogramas($lista_programas, $lista_completa, $lista_variables, $kernel){ ?>
+<?php function tabla_chprogramas($array_programas){ ?>
     <p class="fs-5 mb-0 p-2 d-flex justify-content-center" style="background-color: #212529; color:white">CH PROGRAMAS</p>
     <table class="table table-dark table-striped shadow">
         <thead>
@@ -40,14 +40,14 @@
     </table>
 <?php } ?>
 <!-- MEMORIA PRINCIPAL -->
-<?php function tabla_memoriaprincipal($lista_completa, $kernel, $lista_variables, $lista_variables_valor, $acumulador){ ?>
+<?php function tabla_memoriaprincipal($array_memoria_principal, $kernel) { ?>
     <p class="fs-5 mb-0 p-2 d-flex justify-content-center" style="background-color: #212529; color:white">MEMORIA PRINCIPAL</p>
     <div class="table-wrapper-scroll-y my-custom-scrollbar shadow fs-6">
         <table class="table table-dark table-striped shadow">
             <thead>
                 <tr>
                     <th scope="col"></th>
-                    <th scope="col">Direct</th>
+                    <th scope="col">Posición</th>
                     <th scope="col">Contenido</th>
                 </tr>
             </thead>
@@ -55,51 +55,30 @@
                 <tr>
                     <th scope="row"><i class="fas fa-layer-group fa-lg" style="color: red;"></i></th>
                     <td>0000</td>
-                    <td><?php echo $acumulador ?></td>
+                    <td><?php echo $array_memoria_principal[0]; ?></td>
                 </tr>
                 <?php
-                    for ($i=0; $i < $kernel; $i++) {
-                        $number = $i+1;
-                        $length = 4;
-                        $string = substr(str_repeat(0, $length).$number, - $length);
+                    for ($i=1; $i <= $kernel; $i++) {
+                        $posicion = substr(str_repeat(0, 4).$i, - 4);
                         echo 
                         '
                         <tr>
-                        <th scope="row"><i class="fas fa-sd-card fa-lg" style="color: green;"></i></th>
-                        <td>'.$string.'</td>
-                        <td>***RESERVADO KERNEL***</td>
+                            <th scope="row"><i class="fas fa-sd-card fa-lg" style="color: green;"></i></th>
+                            <td>'.$posicion.'</td>
+                            <td>'.$array_memoria_principal[$i].'</td>
                         </tr>
                         '
                         ;
                     }
-                    for ($i=0; $i < count($lista_completa); $i++) {
-                        $number = $i+$kernel+1;
-                        $length = 4;
-                        $string = substr(str_repeat(0, $length).$number, - $length);
-                        echo 
-                        '
+                    for ($i=$kernel+1; $i < count($array_memoria_principal); $i++) {
+                        $posicion = substr(str_repeat(0, 4).$i, - 4);
+                        echo '
                         <tr>
                         <th scope="row"><i class="fas fa-file-code fa-lg" style="color: yellow;"></i></th>
-                        <td>'.$string.'</td>
-                        <td>'.$lista_completa[$i].'</td>
+                        <td>'.$posicion.'</td>
+                        <td>'.$array_memoria_principal[$i-1].'</td>
                         </tr>
-                        '
-                        ;
-                    }
-                    
-                    for ($i=0; $i < count($lista_variables); $i++) {
-                        $number = $i+$kernel+1+count($lista_completa);
-                        $length = 4;
-                        $string = substr(str_repeat(0, $length).$number, - $length);
-                        echo 
-                        '
-                        <tr>
-                        <th scope="row"><i class="fas fa-file-upload fa-lg" style="color: #ff7700;"></i></th>
-                        <td>'.$string.'</td>
-                        <td>'.$lista_variables_valor[$i].'</td>
-                        </tr>
-                        '
-                        ;
+                        ';
                     }
                 ?>
             </tbody>

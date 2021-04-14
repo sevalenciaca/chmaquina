@@ -27,7 +27,7 @@
                     </form>
 
                     <div class="mt-4 ps-2 d-flex justify-content-center" style="color:white">
-                        <strong>ACUMULADOR: <?php echo $acumulador ?></strong>
+                        <strong>ACUMULADOR: <?php $var = (isset($acumulador)) ? $acumulador : 0 ; echo $var; ?></strong>
                     </div>
 
                 </div>

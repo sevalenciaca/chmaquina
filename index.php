@@ -35,14 +35,13 @@
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-    <?php $acumulador = 0; ?>
     <?php include("funciones.php"); ?>
     <?php include("vistas/navbar.php"); ?>
     <?php include("validaciones/cargarchivo.php"); ?>
     <?php include("validaciones/sintaxis.php"); ?>
     <?php include("vistas/maquinas.php"); ?>
     <?php include("tablas.php"); ?>
-    <?php //include("principal.php"); ?>
+    <?php include("principal.php"); ?>
     <?php include("vistas/footer.php"); ?>
 </body>
 <!-- Bootstrap js -->
