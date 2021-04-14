@@ -2,19 +2,33 @@
 
 $permitidas = array("cargue", "almacene", "nueva", "lea", "sume", "reste", "multiplique", "divida", "potencia", "modulo", "concatene", "elimine", "extraiga", "y", "o", "no", "muestre", "imprima", "vaya", "vayasi", "etiqueta", "retorne", "xxx");
 $directorio = 'carpeta_archivo';
-$array_programas = directorios_array($directorio);
-$nombre_archivo = $array_programas[0];
-$acumulador = 0;
-$kernel = 10; //(10*4)+9;
-$memoria = 100;
-$matriz_instrucciones = lectura_archivo($directorio, $nombre_archivo);
-$matriz_instrucciones_sinseparar = lectura_archivo2($directorio, $nombre_archivo);
-$matriz_variables = filtro($matriz_instrucciones, 'nueva');
-$matriz_variables_nueva = nueva($matriz_variables);
-$matriz_etiquetas = filtro($matriz_instrucciones, 'etiqueta');
-$otros_archivos = otros_archivos($matriz_instrucciones_sinseparar, $matriz_variables_nueva);
-$instrucciones_juntas = programas($directorio, $array_programas, $matriz_variables_nueva);
-$array_memoria_principal = memoria_principal($acumulador, $kernel, $memoria, $instrucciones_juntas);
+
+if (validacion_directorio($directorio)) {
+    $array_programas = directorios_array($directorio);
+    $nombre_archivo = $array_programas[0];
+    $acumulador = 0;
+    $kernel = 10; //(10*4)+9;
+    $memoria = 100;
+    $matriz_instrucciones = lectura_archivo($directorio, $nombre_archivo);
+    $matriz_instrucciones_sinseparar = lectura_archivo2($directorio, $nombre_archivo);
+    $matriz_variables = filtro($matriz_instrucciones, 'nueva');
+    $matriz_variables_nueva = nueva($matriz_variables);
+    $matriz_etiquetas = filtro($matriz_instrucciones, 'etiqueta');
+    $otros_archivos = otros_archivos($matriz_instrucciones_sinseparar, $matriz_variables_nueva);
+    $instrucciones_juntas = programas($directorio, $array_programas, $matriz_variables_nueva);
+    $array_memoria_principal = memoria_principal($acumulador, $kernel, $memoria, $instrucciones_juntas);
+    $matriz_sintaxis = sintaxis($matriz_instrucciones);
+}
+
+
+function validacion_directorio($directorio) {
+    $carpeta = @scandir($directorio);
+    if (count($carpeta) > 2){
+        return true;
+    }else{
+        return false;
+    }
+}
 
 function lectura_archivo($directorio, $nombre_archivo) {
     $archivo = fopen($directorio.'/'.$nombre_archivo,'r');
@@ -128,43 +142,21 @@ function directorios_array($dir) {
     return $lista_programas;
 }
 
-function validacion_directorio($directorio) {
-    $carpeta = @scandir($directorio);
-    if (count($carpeta) > 2){
-        return TRUE;
-    }else{
-        return FALSE;
+function sintaxis($matriz_instrucciones) {
+    for ($i=0; $i < count($matriz_instrucciones); $i++) { 
+        $array[] = $matriz_instrucciones[$i][0];
     }
+    return $array;
 }
 
-function validacion_sintaxis($permitidas, $matriz_instrucciones) {
-    $cont = 0;
-    $errores = array();
-    for ($i=0; $i < count($matriz_instrucciones) ; $i++) { 
-        if (!(in_array($matriz_instrucciones[$i][0], $permitidas))) {
-            $cont++;
-            $errores[] = $i;
-            return true;
-        }else {
-            return false;
-        }
-    }
-}
-
-if (validacion_sintaxis($permitidas, $matriz_instrucciones)) {
-    echo "Esta bien";
-}else {
-    echo 'Esta mal';
-}
-
-// if (is_dir('folder')) {
+// if (is_dir($directorio)) {
 //     //Escaneamos el directorio
-//     $carpeta = @scandir('folder');
+//     $carpeta = @scandir($directorio);
 //     //Miramos si existen archivos
 //     if (count($carpeta) > 2){
 //         echo 'El directorio tiene archivos';
 //         //Miramos si existe el archivo pasado como parámetro
-//         if (file_exists('folder/index.php')) 
+//         if (file_exists($directorio.'/'.$nombre_archivo)) 
 //             echo 'El archivo existe';
 //         else
 //             echo 'El archivo no existe';
@@ -185,21 +177,9 @@ if (validacion_sintaxis($permitidas, $matriz_instrucciones)) {
 // echo '</pre>';
 // echo '---------------------------------------------';
 // echo '<pre>';
-// var_dump($matriz_etiquetas);
-// echo '</pre>';
-// echo '---------------------------------------------';
-// echo '<pre>';
-// var_dump($matriz_variables);
-// echo '</pre>';
-// echo '---------------------------------------------';
-// echo '<pre>';
 // var_dump($matriz_variables_nueva);
 // echo '</pre>';
 // echo '---------------------------------------------';
-
-// echo '<pre>';
-// var_dump($array_memoria_principal);
-// echo '</pre>';
 
 // echo '---------------------------------------------';
 // echo '<pre>';
@@ -211,4 +191,5 @@ if (validacion_sintaxis($permitidas, $matriz_instrucciones)) {
 // echo '<pre>';
 // var_dump($otros_archivos);
 // echo '</pre>';
+
 ?>
