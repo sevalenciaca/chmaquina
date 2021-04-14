@@ -1,5 +1,4 @@
 <?php
-    session_start();
     if (isset($_SESSION['message']) && $_SESSION['message']){
         echo
         '
@@ -13,6 +12,5 @@
             </div>
         </div>
         ';
-        unset($_SESSION['message']);
     }
 ?>

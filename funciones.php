@@ -18,8 +18,10 @@ if (validacion_directorio($directorio)) {
     $instrucciones_juntas = programas($directorio, $array_programas, $matriz_variables_nueva);
     $array_memoria_principal = memoria_principal($acumulador, $kernel, $memoria, $instrucciones_juntas);
     $matriz_sintaxis = sintaxis($matriz_instrucciones);
+    echo '<pre>';
+    var_dump($array_memoria_principal);
+    echo '</pre>';
 }
-
 
 function validacion_directorio($directorio) {
     $carpeta = @scandir($directorio);
@@ -142,9 +144,16 @@ function directorios_array($dir) {
     return $lista_programas;
 }
 
+function quitar_tildes($cadena) {
+    $no_permitidas= array ("á","é","í","ó","ú","Á","É","Í","Ó","Ú","ñ","À","Ã","Ì","Ò","Ù","Ã™","Ã ","Ã¨","Ã¬","Ã²","Ã¹","ç","Ç","Ã¢","ê","Ã®","Ã´","Ã»","Ã‚","ÃŠ","ÃŽ","Ã”","Ã›","ü","Ã¶","Ã–","Ã¯","Ã¤","«","Ò","Ã","Ã„","Ã‹");
+    $permitidas= array ("a","e","i","o","u","A","E","I","O","U","n","N","A","E","I","O","U","a","e","i","o","u","c","C","a","e","i","o","u","A","E","I","O","U","u","o","O","i","a","e","U","I","A","E");
+    $texto = str_replace($no_permitidas, $permitidas ,$cadena);
+    return $texto;
+}
+
 function sintaxis($matriz_instrucciones) {
     for ($i=0; $i < count($matriz_instrucciones); $i++) { 
-        $array[] = $matriz_instrucciones[$i][0];
+        $array[] = quitar_tildes(strtolower($matriz_instrucciones[$i][0]));
     }
     return $array;
 }
@@ -176,9 +185,7 @@ function sintaxis($matriz_instrucciones) {
 // var_dump($matriz_instrucciones_sinseparar);
 // echo '</pre>';
 // echo '---------------------------------------------';
-// echo '<pre>';
-// var_dump($matriz_variables_nueva);
-// echo '</pre>';
+
 // echo '---------------------------------------------';
 
 // echo '---------------------------------------------';

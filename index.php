@@ -19,11 +19,9 @@
     <?php include("vistas/navbar.php"); ?>
     <?php include("validaciones/cargarchivo.php"); ?>
     <?php include("validaciones/sintaxis.php"); ?>
-    <?php include("funcionesauxiliares.php"); ?>
-    <?php include("lecturarchivo.php"); ?>
     <?php include("vistas/maquinas.php"); ?>
     <?php include("tablas.php"); ?>
-    <?php include("principal.php"); ?>
+    <?php //include("principal.php"); ?>
     <?php include("vistas/footer.php"); ?>
 </body>
 <!-- Bootstrap js -->
