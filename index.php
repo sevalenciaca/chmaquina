@@ -1,17 +1,38 @@
 <!doctype html>
 <html lang="es">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/estilos.css">
+    <!-- Meta Etiquetas -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <!-- Descripción de la página web-->
+    <meta name="description" content=""/>
+    <!-- Palabras Clave -->
+    <meta name="keywords" content=""/>
+    <!-- Autor -->
+    <meta name="author" content="Sebastian Valencia Carvajal"/>
+    <!-- Copyright -->
+    <meta name="copyright" content="Sebastian Valencia Carvajal"/>
+    <!-- index, noindex, follow, nofollow -->
+    <meta name="robots" content="index, follow"/>
+    <!-- Control del cache -->
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <!-- Tiempo -->
+    <meta http-equiv="expires" content="0">
+    <meta property="og:image" content="https://www.sebasvalcar.com/favicon.ico">
+    <meta property="og:image:width" content="100%">
+    <meta property="og:image:height" content="auto">
+    <meta property="og:url" content="https://www.sebasvalcar.com">
+    <meta property="og:site_name" content="CH MÁQUINA">
+    <meta property="og:title" content="">
     <!-- Título de la pestaña -->
     <title>CH MAQUINA</title>
     <!-- Favicon de la pestaña -->
     <link rel="icon" href="img/favicon.ico">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
     <?php $acumulador = 0; ?>
