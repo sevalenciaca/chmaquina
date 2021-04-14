@@ -1,6 +1,6 @@
 # Proyecto CH Máquina
 
-## Fase B (Pre-Entrega)
+## Fase B
 ## Características del Proyecto:
 * Es un proyecto construido 100% en la web y subido a un servidor
 * Accesible desde cualquier dispositivo con un navegador
