@@ -5,10 +5,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-8 col-xl-8">
-                    <?php tabla_chprogramas($array_programas, $instrucciones_juntas, $kernel); ?>
+                    <?php tabla_chprogramas($array_programas, $instrucciones_juntas, $kernel, $directorio, $matriz_variables_nueva); ?>
                     <div class="row">
                         <div class="col-12 col-md-12 col-lg-6 col-xl-6">
-                            <?php //tabla_instrucciones($lista_completa, $kernel); ?>
+                            <?php tabla_instrucciones($array_memoria_principal, $kernel, $memoria); ?>
                         </div>
                         <div class="col-12 col-md-12 col-lg-6 col-xl-6">
                             <?php //tabla_variables($lista_variables, $lista_completa, $kernel, $lista_programas); ?>

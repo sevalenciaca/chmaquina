@@ -1,5 +1,5 @@
 <!-- CH PROGRAMAS -->
-<?php function tabla_chprogramas($array_programas, $instrucciones_juntas, $kernel){ ?>
+<?php function tabla_chprogramas($array_programas, $instrucciones_juntas, $kernel, $directorio, $matriz_variables_nueva){ ?>
     <p class="fs-5 mb-0 p-2 d-flex justify-content-center" style="background-color: #212529; color:white">CH PROGRAMAS</p>
     <table class="table table-dark table-striped shadow">
         <thead>
@@ -14,22 +14,21 @@
         </thead>
         <tbody>
             <?php
-                
-                $no_instrucciones = count($instrucciones_juntas);
-                $RB = $kernel+1;
-                $RLC = $kernel + count($instrucciones_juntas);
-                $RLP = $kernel + $no_instrucciones;
+                // $RB = $kernel+1;
+                // $RLC = $kernel + count($instrucciones_juntas);
+                // $RLP = $kernel + $no_instrucciones;
                 for ($i=0; $i < count($array_programas); $i++) {
+                    $instrucciones = otros_archivos(lectura_archivo2($directorio, $array_programas[$i]), $matriz_variables_nueva);
                     $posicion = substr(str_repeat(0, 4).$i, - 4);
                     echo 
                     '
                     <tr>
                         <td scope="row">'.$posicion.'</td>
                         <td>'.$array_programas[$i].'</td>
-                        <td>'.$no_instrucciones.'</td>
-                        <td>'.$RB.'</td>
-                        <td>'.$RLC.'</td>
-                        <td>'.$RLP.'</td>
+                        <td>'.count($instrucciones).'</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     '
                     ;
@@ -85,7 +84,7 @@
     </div>
 <?php } ?>
 <!-- INSTRUCCIONES -->
-<?php function tabla_instrucciones($lista_completa, $kernel){ ?>
+<?php function tabla_instrucciones($array_memoria_principal, $kernel, $memoria){ ?>
     <div class="table-wrapper-scroll-y2 my-custom-scrollbar2">
         <table class="table table-light table-striped shadow">
             <thead>
@@ -96,15 +95,14 @@
             </thead>
             <tbody>
                 <?php
-                    for ($i=0; $i < count($lista_completa); $i++) {
-                        $number = $i+$kernel+1;
-                        $length = 4;
-                        $string = substr(str_repeat(0, $length).$number, - $length);
+                    $var = abs(count($array_memoria_principal) - $memoria);
+                    for ($i=$kernel+1; $i < $var; $i++) {
+                        $posicion = substr(str_repeat(0, 4).$i, - 4);
                         echo 
                         '
                         <tr>
-                            <td scope="row">'.$string.'</td>
-                            <td>'.$lista_completa[$i].'</td>
+                            <td scope="row">'.$posicion.'</td>
+                            <td>'.$array_memoria_principal[$i].'</td>
                         </tr>
                         '
                         ;

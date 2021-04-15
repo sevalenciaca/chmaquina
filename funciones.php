@@ -30,7 +30,6 @@ if (validacion_directorio($directorio)) {
     // echo '</pre>';
 }
 
-
 function validacion_directorio($directorio) {
     $carpeta = @scandir($directorio);
     if (count($carpeta) > 2){
@@ -87,7 +86,7 @@ function nueva ($matriz_variables) {
     return $matriz_variables;
 }
 
-function otros_archivos ($matriz_instrucciones_sinseparar, $matriz_variables_nueva) {
+function otros_archivos($matriz_instrucciones_sinseparar, $matriz_variables_nueva) {
     for ($i=0; $i < count($matriz_instrucciones_sinseparar); $i++) {
         $array[] = $matriz_instrucciones_sinseparar[$i];
     }
@@ -97,7 +96,7 @@ function otros_archivos ($matriz_instrucciones_sinseparar, $matriz_variables_nue
     return $array;
 }
 
-function programas ($directorio, $array_programas, $matriz_variables_nueva) {
+function programas($directorio, $array_programas, $matriz_variables_nueva) {
     if (count($array_programas) > 1) {
         $matriz = otros_archivos(lectura_archivo2($directorio, $array_programas[0]), $matriz_variables_nueva);
         for ($i=1; $i < count($array_programas); $i++) {
@@ -127,23 +126,23 @@ function memoria_principal ($acumulador, $kernel, $memoria, $instrucciones_junta
     return $array;
 }
 
-function directorios_array($dir) {
+function directorios_array($directorio) {
     //creo un array
     $lista_programas = array();
-    //abro los directorios contenidos en $dir
-    if($handler = opendir($dir)) {
+    //abro los directorios contenidos en $directorio
+    if($handler = opendir($directorio)) {
         //leo todos los elementos contenidos 
-        while (($file = readdir($handler)) !== FALSE) {
+        while (($nombre_archivo = readdir($handler)) !== FALSE) {
             //verifico que hayan elementos
-            if ($file != "." && $file != "..") {
+            if ($nombre_archivo != "." && $nombre_archivo != "..") {
                 /*si los elementos son archivos, guardo los elementos 
                 en algún indice (dimensión) del array*/
-                if(is_file($dir."/".$file)) {
-                    $lista_programas[] = $file;
+                if(is_file($directorio."/".$nombre_archivo)) {
+                    $lista_programas[] = $nombre_archivo;
                 /*si los elementos son directorios, guardo los elementos 
                 en otro índice o dimensión, repitiendo hasta que hayan elementos*/
-                }elseif(is_dir($dir."/".$file)){
-                    $lista_programas[$file] = dirToArray ($dir."/".$file);
+                }elseif(is_dir($directorio."/".$nombre_archivo)){
+                    $lista_programas[$nombre_archivo] = directorios_array($directorio."/".$nombre_archivo);
                 }
             }
         }
