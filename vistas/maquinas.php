@@ -12,12 +12,12 @@
                         <input type="range" class="form-range" name="velocidad">
                         <div class="input-group mt-3">
                             <span class="input-group-text"><strong>Memoria</strong></span>
-                            <input type="number" min="0" max="9999" value="<?php $var = (isset($_POST['memoria'])) ? $_POST['memoria'] : count($array_memoria_principal) ; echo $var; ?>" name="memoria" class="form-control">
+                            <input id="inputmemoria" type="number" min="0" max="9999" value="<?php $var = (isset($_POST['memoria'])) ? $_POST['memoria'] : count($array_memoria_principal) ; echo $var; ?>" name="memoria" class="form-control">
                         </div>
 
                         <div class="input-group mt-3">
                             <span class="input-group-text"><strong>Kernel</strong></span>
-                            <input type="number" min="0" max="9999" value="<?php $var = (isset($_POST['kernel'])) ? $_POST['kernel'] : $var2 = (isset($array_memoria_principal)) ? 49 : null ; echo $var; ?>" name="kernel" class="form-control">
+                            <input id="inputkernel" type="number" min="0" max="9999" value="<?php $var = (isset($_POST['kernel'])) ? $_POST['kernel'] : $var2 = (isset($array_memoria_principal)) ? 49 : null ; echo $var; ?>" name="kernel" class="form-control">
                         </div>
     
                         <!-- <div class="mt-0 d-flex justify-content-center" style="color:white">
