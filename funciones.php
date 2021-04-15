@@ -184,18 +184,4 @@ function sintaxis($matriz_instrucciones) {
 // else {
 //     echo 'El directorio no existe.';
 // }
-
-// $archivo = fopen('carpeta_archivo/'.$lista_programas[$posicion],'r');
-// $nombre_fichero = 'carpeta_archivo/'.$lista_programas[$posicion];
-// $vacio=(!file_exists($nombre_fichero) || !filesize($nombre_fichero)) ? FALSE : TRUE;
-// fclose($archivo);
-// if (!$vacio) {
-//     echo 'El archivo: '.$lista_programas[0].' está vacío';
-// }
-// elseif ($cont != 0) {
-//     echo 'SINTAXIS INCORRECTA. Se encontraron errores de sintaxis en el archivo en las siguientes lineas';
-//     for ($j=0; $j < count($errores) ; $j++) {
-//         var_dump($errores[$j]);
-//     }
-// }
 ?>
