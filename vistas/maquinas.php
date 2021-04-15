@@ -5,19 +5,19 @@
                 <img class="p-2 img-fluid" src="img/cpu.png" alt="CPU">
                 <div class="p-4 position-absolute top-0 end-0 start-0 botton-0">
 
-                    <form id="formCPU" name="formulario" method="post" action="botones/ejecutar.php">
+                    <form id="formCPU" name="formulario" method="post" action="../index.php">
                         <label class="form-label" style="color:white">
                             <strong>Velocidad</strong>
                         </label>
                         <input type="range" class="form-range" name="velocidad">
                         <div class="input-group mt-3">
                             <span class="input-group-text"><strong>Memoria</strong></span>
-                            <input type="number" min="0" max="9999" value="0" name="memoria" class="form-control">
+                            <input type="number" min="0" max="9999" value="<?php $var = (isset($_POST['memoria'])) ? $_POST['memoria'] : count($array_memoria_principal) ; echo $var; ?>" name="memoria" class="form-control">
                         </div>
 
                         <div class="input-group mt-3">
                             <span class="input-group-text"><strong>Kernel</strong></span>
-                            <input type="number" min="0" max="9999" value="49" name="kernel" class="form-control">
+                            <input type="number" min="0" max="9999" value="<?php $var = (isset($_POST['kernel'])) ? $_POST['kernel'] : $var2 = (isset($array_memoria_principal)) ? 49 : null ; echo $var; ?>" name="kernel" class="form-control">
                         </div>
     
                         <!-- <div class="mt-0 d-flex justify-content-center" style="color:white">
@@ -25,10 +25,13 @@
                         </div> -->
 
                     </form>
-
-                    <div class="mt-4 ps-2 d-flex justify-content-center" style="color:white">
-                        <strong>ACUMULADOR: <?php $var = (isset($acumulador)) ? $acumulador : 0 ; echo $var; ?></strong>
+                    <div class="input-group mt-3">
+                        <span class="input-group-text"><strong>Acumulador</strong></span>
+                        <input type="number" value="<?php $var = (isset($acumulador)) ? $acumulador : 0 ; echo $var; ?>" name="kernel" class="form-control" disabled="true">
                     </div>
+                    <!-- <div class="mt-4 ps-2 d-flex justify-content-center" style="color:white">
+                        <strong>ACUMULADOR: <?php $var = (isset($acumulador)) ? $acumulador : 0 ; echo $var; ?></strong>
+                    </div> -->
 
                 </div>
             </div>

@@ -7,8 +7,15 @@ if (validacion_directorio($directorio)) {
     $array_programas = directorios_array($directorio);
     $nombre_archivo = $array_programas[0];
     $acumulador = 0;
-    $kernel = 25; //(10*4)+9;
-    $memoria = 100;
+    if (isset($_POST['kernel'], $_POST['memoria'], $_POST['velocidad'])) {
+        $kernel = $_POST['kernel'];
+        $memoria = $_POST['memoria'];
+        $velocidad = $_POST['velocidad'];
+    }else {
+        $kernel = 49;
+        $memoria = 0;
+        $velocidad = 25;
+    }
     $matriz_instrucciones = lectura_archivo($directorio, $nombre_archivo);
     $matriz_instrucciones_sinseparar = lectura_archivo2($directorio, $nombre_archivo);
     $matriz_variables = filtro($matriz_instrucciones, 'nueva');
@@ -22,6 +29,7 @@ if (validacion_directorio($directorio)) {
     // var_dump($array_memoria_principal);
     // echo '</pre>';
 }
+
 
 function validacion_directorio($directorio) {
     $carpeta = @scandir($directorio);
@@ -190,5 +198,4 @@ function sintaxis($matriz_instrucciones) {
 //         var_dump($errores[$j]);
 //     }
 // }
-
 ?>

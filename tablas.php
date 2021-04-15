@@ -59,7 +59,7 @@
                 <?php
                     for ($i=1; $i <= $kernel; $i++) {
                         $posicion = substr(str_repeat(0, 4).$i, - 4);
-                        echo 
+                        echo
                         '
                         <tr>
                             <th scope="row"><i class="fas fa-sd-card fa-lg" style="color: green;"></i></th>
