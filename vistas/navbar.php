@@ -24,9 +24,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fas fa-list"></i> Pasos</a>
                 </li>
-                <li class="nav-item">
-                    <button class="nav-link btn btn-link" type="submit" form="formCPU"><i class="fas fa-memory"></i> Memoria</button>
-                    <!-- <a class="nav-link btn btn-link" href="#"><i class="fas fa-memory"></i> Memoria</a> -->
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-memory"></i> Memoria
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="javascript:document.getElementById('memoriap').style.display = 'block';void0"><i class="fas fa-eye-slash"></i> Mostrar</a></li>
+                        <li><a class="dropdown-item" href="javascript:document.getElementById('memoriap').style.display='none';void0"><i class="fas fa-eye"></i> Ocultar</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fas fa-book"></i> Instrucciones</a>

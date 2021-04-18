@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-12 col-lg-4 col-xl-4">
-                    <div>
+                    <div id="memoriap" style="display: none;">
                         <?php tabla_memoriaprincipal($array_memoria_principal, $kernel); ?>
                     </div>
                     <div class="mt-3">
