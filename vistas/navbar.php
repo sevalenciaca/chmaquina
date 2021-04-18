@@ -25,7 +25,8 @@
                     <a class="nav-link" href="#"><i class="fas fa-list"></i> Pasos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-memory"></i> Memoria</a>
+                    <button class="nav-link btn btn-link" type="submit" form="formCPU"><i class="fas fa-memory"></i> Memoria</button>
+                    <!-- <a class="nav-link btn btn-link" href="#"><i class="fas fa-memory"></i> Memoria</a> -->
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fas fa-book"></i> Instrucciones</a>
@@ -36,6 +37,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Salir</a>
                 </li>
+                <!-- <li class="nav-item"> -->
+                    <!-- <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Prueba</a> -->
+                    <!-- <button type="button" class="btn btn-info" id='mostrar_fileupload_contrato' style="margin-left: 10px">Subir</button> -->
+                <!-- </li> -->
             </ul>
         </div>
     </div>

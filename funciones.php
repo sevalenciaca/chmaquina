@@ -13,7 +13,7 @@ if (validacion_directorio($directorio)) {
         $velocidad = $_POST['velocidad'];
     }else {
         $kernel = 49;
-        $memoria = 0;
+        $memoria = 100;
         $velocidad = 25;
     }
     $matriz_instrucciones = lectura_archivo($directorio, $nombre_archivo);
@@ -26,7 +26,7 @@ if (validacion_directorio($directorio)) {
     $array_memoria_principal = memoria_principal($acumulador, $kernel, $memoria, $instrucciones_juntas);
     $matriz_sintaxis = sintaxis($matriz_instrucciones);
     // echo '<pre>';
-    // var_dump($array_memoria_principal);
+    // var_dump($instrucciones_juntas);
     // echo '</pre>';
 }
 
@@ -120,9 +120,17 @@ function memoria_principal ($acumulador, $kernel, $memoria, $instrucciones_junta
     for ($i=0; $i < count($instrucciones_juntas); $i++) {
         array_push($array, $instrucciones_juntas[$i]);
     }
-    for ($i=0; $i < $memoria-$var; $i++) {
-        array_push($array, null);
+
+    $message3 = '';
+    if ($var < $memoria) {
+        for ($i=0; $i < $memoria-$var; $i++) {
+            array_push($array, null);
+        }
+    }else {
+        $message3 = 'Se ha alcanzado el límite de la memoria principal';
     }
+    $_SESSION['message3'] = $message3;
+    
     return $array;
 }
 

@@ -84,7 +84,7 @@
     </div>
 <?php } ?>
 <!-- INSTRUCCIONES -->
-<?php function tabla_instrucciones($array_memoria_principal, $kernel, $memoria){ ?>
+<?php function tabla_instrucciones($array_memoria_principal, $kernel, $instrucciones_juntas){ ?>
     <div class="table-wrapper-scroll-y2 my-custom-scrollbar2">
         <table class="table table-light table-striped shadow">
             <thead>
@@ -95,8 +95,7 @@
             </thead>
             <tbody>
                 <?php
-                    $var = abs(count($array_memoria_principal) - $memoria);
-                    for ($i=$kernel+1; $i < $var; $i++) {
+                    for ($i=(1+$kernel); $i < (1+$kernel) + count($instrucciones_juntas); $i++) {
                         $posicion = substr(str_repeat(0, 4).$i, - 4);
                         echo 
                         '
