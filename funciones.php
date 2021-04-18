@@ -25,6 +25,34 @@ if (validacion_directorio($directorio)) {
     $instrucciones_juntas = programas($directorio, $array_programas, $matriz_variables_nueva);
     $array_memoria_principal = memoria_principal($acumulador, $kernel, $memoria, $instrucciones_juntas);
     $matriz_sintaxis = sintaxis($matriz_instrucciones);
+
+    $validacion3 = '';
+    $validacion4 = '';
+
+    $cont = 0;
+    $errores = array();
+    for ($i=0; $i < count($matriz_sintaxis) ; $i++) { 
+        if (!(in_array($matriz_sintaxis[$i], $permitidas))) {
+            $cont++;
+            $errores[] = $i;
+        }
+    }
+    if (empty($errores)) {
+        $validacion3 =  'El archivo con extensión .ch se cargó correctamente y la sintaxis es correcta';
+    }else {
+        $validacion4 = 'El archivo con extensión .ch se cargó, sin embargo, la sintaxis es incorrecta. ';
+        $validacion4 .= 'Se encontraron '.$cont.' errores';
+    }
+
+    $_SESSION['validacion3'] = $validacion3;
+    $_SESSION['validacion4'] = $validacion4;
+
+    $validacion5 = '';
+    if (validacion_archivo($matriz_instrucciones)) {
+        $validacion5 = 'El archivo está vació';
+    }
+    $_SESSION['validacion5'] = $validacion5;
+
     // echo '<pre>';
     // var_dump($instrucciones_juntas);
     // echo '</pre>';
@@ -35,6 +63,14 @@ function validacion_directorio($directorio) {
     if (count($carpeta) > 2){
         return true;
     }else{
+        return false;
+    }
+}
+
+function validacion_archivo($matriz_instrucciones) {
+    if ($matriz_instrucciones == false) {
+        return true;
+    }else {
         return false;
     }
 }
@@ -121,15 +157,15 @@ function memoria_principal ($acumulador, $kernel, $memoria, $instrucciones_junta
         array_push($array, $instrucciones_juntas[$i]);
     }
 
-    $message3 = '';
+    $validacion2 = '';
     if ($var < $memoria) {
         for ($i=0; $i < $memoria-$var; $i++) {
             array_push($array, null);
         }
     }else {
-        $message3 = 'Se ha alcanzado el límite de la memoria principal';
+        $validacion2 = 'Se ha alcanzado el límite de la memoria principal, no se permite cargar más programas';
     }
-    $_SESSION['message3'] = $message3;
+    $_SESSION['validacion2'] = $validacion2;
     
     return $array;
 }

@@ -35,15 +35,21 @@
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
+    <?php session_start(); ?>
     <?php include("funciones.php"); ?>
     <?php include("vistas/navbar.php"); ?>
+
     <?php include("validaciones/cargarchivo.php"); ?>
-    <?php include("validaciones/sintaxis.php"); ?>
+    <?php include("validaciones/sintaxiscorrecta.php"); ?>
+    <?php include("validaciones/sintaxisincorrecta.php"); ?>
     <?php include("validaciones/memoria.php"); ?>
+    <?php include("validaciones/vacio.php"); ?>
+
     <?php include("vistas/maquinas.php"); ?>
     <?php include("tablas.php"); ?>
     <?php include("principal.php"); ?>
     <?php include("vistas/footer.php"); ?>
+    <a href="http://"></a>
 </body>
 <!-- JS -->
 <script src="js/inputs.js"></script>

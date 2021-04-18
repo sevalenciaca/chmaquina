@@ -1,6 +1,6 @@
 <?php
 session_start();
-$message = '';
+$validacion1 = '';
 // Valida si es una solicitud por metodo POST
 if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Cargar'){
     // Se verifica que la carga del archivo se realizó correctamente
@@ -32,21 +32,21 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Cargar'){
             // Mover el archivo cargado a la ubicación específica, en este caso a (carpeta_archivo)
             // Esta función toma dos argumentos. El primer argumento es el nombre de archivo del archivo cargado, y el segundo argumento es la ruta de destino a la que desea mover el archivo.
             if(move_uploaded_file($fileTmpPath, $dest_path)) {
-                // $message ='El archivo con extensión .ch se cargó correctamente y la sitaxis del archivo es correcta';
+                // $validacion1 ='El archivo con extensión .ch se cargó correctamente y la sitaxis del archivo es correcta';
             }
             else{
-                $message = 'Hubo algún error al mover el archivo al directorio de carga. Asegúrese de que el servidor web pueda escribir en el directorio de carga.';
+                $validacion1 = 'Hubo algún error al mover el archivo al directorio de carga. Asegúrese de que el servidor web pueda escribir en el directorio de carga.';
             }
         }
         else{
-            $message = 'Subida fallida. Solo se permiten archivos con extensión ' . implode(',', $allowedfileExtensions);
+            $validacion1 = 'Subida fallida. Solo se permiten archivos con extensión .' . implode(',', $allowedfileExtensions);
         }
     }
     else{
-        $message = 'Hay algún error en la carga del archivo';
-        $message .= 'Error:' . $_FILES['uploadedFile']['error'];
+        $validacion1 = 'Hay algún error en la carga del archivo';
+        // $validacion1 .= 'Error:' . $_FILES['uploadedFile']['error'];
     }
 }
 
-$_SESSION['message'] = $message;
+$_SESSION['validacion1'] = $validacion1;
 header("Location: index.php");
