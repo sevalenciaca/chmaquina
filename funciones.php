@@ -34,14 +34,22 @@ if (validacion_directorio($directorio)) {
     for ($i=0; $i < count($matriz_sintaxis) ; $i++) { 
         if (!(in_array($matriz_sintaxis[$i], $permitidas))) {
             $cont++;
-            $errores[] = $i;
+            $errores[] = $matriz_sintaxis[$i];
         }
     }
+
+    for ($i=0; $i < count($errores); $i++) {
+        
+    }
+
     if (empty($errores)) {
         $validacion3 =  'El archivo con extensión .ch se cargó correctamente y la sintaxis es correcta';
     }else {
         $validacion4 = 'El archivo con extensión .ch se cargó, sin embargo, la sintaxis es incorrecta. ';
-        $validacion4 .= 'Se encontraron '.$cont.' errores';
+        $validacion4 .= '<br>Se encontraron '.$cont.' errores: ';
+        for ($i=0; $i < count($errores); $i++) {
+            $validacion4 .= $errores[$i].' ';
+        }
     }
 
     $_SESSION['validacion3'] = $validacion3;
