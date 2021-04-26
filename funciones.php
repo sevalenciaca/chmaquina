@@ -76,7 +76,7 @@ function validacion_directorio($directorio) {
 }
 
 function validacion_archivo($matriz_instrucciones) {
-    if ($matriz_instrucciones == false) {
+    if (count($matriz_instrucciones) == 0) {
         return true;
     }else {
         return false;

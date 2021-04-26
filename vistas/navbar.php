@@ -30,15 +30,21 @@
                         <i class="fas fa-memory"></i> Memoria
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="javascript:document.getElementById('memoriap').style.display = 'block';void0"><i class="fas fa-eye-slash"></i> Mostrar</a></li>
-                        <li><a class="dropdown-item" href="javascript:document.getElementById('memoriap').style.display='none';void0"><i class="fas fa-eye"></i> Ocultar</a></li>
+                        <li><a class="dropdown-item" href="javascript:document.getElementById('memoriap').style.display = 'block';void0"><i class="fas fa-eye"></i> Mostrar</a></li>
+                        <li><a class="dropdown-item" href="javascript:document.getElementById('memoriap').style.display='none';void0"><i class="fas fa-eye-slash"></i> Ocultar</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fas fa-book"></i> Instrucciones</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="botones/eliminar.php"><i class="fas fa-trash"></i> Eliminar</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-trash"></i> Eliminar
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="../botones/eliminar.php">Todos los programas</a></li>
+                        <li><a class="dropdown-item" href="../botones/eliminarultimo.php">Último programa</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Salir</a>

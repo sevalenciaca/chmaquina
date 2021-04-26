@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row font-italic pt-3 mt-2">
             <div class="col d-flex justify-content-center text-center" style="color:white;">
-                &copy; Copyright 2021 - Sebastián | Todos los derechos reservados<br>
-                <br>Proyecto desarrollado por: Sebastián Valencia Carvajal - 0916066<br>sevalenciaca@unal.edu.co<br>
+                &copy; Copyright 2021 - Todos los derechos reservados<br>
+                <br>Autor Proyecto: Sebastián Valencia Carvajal - 0916066<br>sevalenciaca@unal.edu.co<br>
             </div>
         </div>
         <div class="row font-italic pt-3 mt-2">
