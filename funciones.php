@@ -12,40 +12,45 @@ if (validacion_directorio($directorio)) {
         $memoria = $_POST['memoria'];
         $velocidad = $_POST['velocidad'];
     }else {
-        $kernel = 49;
+        $kernel = 5;
         $memoria = 100;
         $velocidad = 25;
     }
+
+    for ($i=0; $i < $memoria; $i++) {
+        $matriz_completa[$i]['posicion'] = substr(str_repeat(0, 4).$i, - 4);
+        $matriz_completa[$i]['tipo'] = null;
+        $matriz_completa[$i]['programa'] = null;
+        $matriz_completa[$i]['valorp'] = null;
+        $matriz_completa[$i]['valor1'] = null;
+        $matriz_completa[$i]['valor2'] = null;
+        $matriz_completa[$i]['valor3'] = null;
+        $matriz_completa[$i]['valor4'] = null;
+    }
+
     $matriz_instrucciones = lectura_archivo($directorio, $nombre_archivo);
-    $matriz_instrucciones_sinseparar = lectura_archivo2($directorio, $nombre_archivo);
+    $matriz_variables = filtro_variables($matriz_instrucciones);
 
-    $matriz_variables = filtro($matriz_instrucciones, 'nueva');
-    $matriz_variables_nueva = nueva($matriz_variables);
-
-    $matriz_etiquetas = filtro($matriz_instrucciones, 'etiqueta');
+    // $matriz_etiquetas = filtro($matriz_instrucciones, 'etiqueta');
     
-    $otros_archivos = otros_archivos($matriz_instrucciones_sinseparar, $matriz_variables_nueva);
-    $instrucciones_juntas = programas($directorio, $array_programas);
-    $instrucciones_juntas2 = programas2($directorio, $array_programas);
-    $array_memoria_principal = memoria_principal($acumulador, $kernel, $memoria, $instrucciones_juntas);
-    $array_memoria_principal2 = memoria_principal($acumulador, $kernel, $memoria, $instrucciones_juntas2);
-    $matriz_sintaxis = sintaxis($matriz_instrucciones);
+    // $otros_archivos = otros_archivos($matriz_instrucciones_sinseparar, $matriz_variables_nueva);
+    // $instrucciones_juntas = programas($directorio, $array_programas);
+    // $instrucciones_juntas2 = programas2($directorio, $array_programas);
+    // $array_memoria_principal = memoria_principal($matriz_completa, $acumulador, $kernel, $memoria, $instrucciones_juntas);
+    // $array_memoria_principal2 = memoria_principal($matriz_completa, $acumulador, $kernel, $memoria, $instrucciones_juntas2);
+    // $matriz_sintaxis = sintaxis($matriz_instrucciones);
 
     $validacion3 = '';
     $validacion4 = '';
 
     $cont = 0;
     $errores = array();
-    for ($i=0; $i < count($matriz_sintaxis) ; $i++) { 
-        if (!(in_array($matriz_sintaxis[$i], $permitidas))) {
-            $cont++;
-            $errores[] = $matriz_sintaxis[$i];
-        }
-    }
-
-    for ($i=0; $i < count($errores); $i++) {
-        
-    }
+    // for ($i=0; $i < count($matriz_sintaxis) ; $i++) { 
+    //     if (!(in_array($matriz_sintaxis[$i], $permitidas))) {
+    //         $cont++;
+    //         $errores[] = $matriz_sintaxis[$i];
+    //     }
+    // }
 
     if (empty($errores)) {
         $validacion3 =  'El archivo con extensión .ch se cargó correctamente y la sintaxis es correcta';
@@ -72,9 +77,9 @@ if (validacion_directorio($directorio)) {
     // echo '<pre>';
     // var_dump($matriz_instrucciones_sinseparar);
     // echo '</pre>';
-    // echo '<pre>';
-    // var_dump($matriz_variables);
-    // echo '</pre>';
+    echo '<pre>';
+    var_dump($matriz_variables);
+    echo '</pre>';
     // echo '<pre>';
     // var_dump($matriz_variables_nueva);
     // echo '</pre>';
@@ -89,9 +94,9 @@ if (validacion_directorio($directorio)) {
     // echo '<pre>';
     // var_dump($array_memoria_principal);
     // echo '</pre>';
-    echo '<pre>';
-    var_dump($array_memoria_principal2);
-    echo '</pre>';
+    // echo '<pre>';
+    // var_dump($array_memoria_principal2);
+    // echo '</pre>';
 }
 
 function validacion_directorio($directorio) {
@@ -116,44 +121,68 @@ function lectura_archivo($directorio, $nombre_archivo) {
     while (!feof($archivo)) {
         $linea = trim(fgets($archivo));
         if (!stristr($linea, '//')) {
-            $linea_separada = explode(" ",$linea);
-            $matriz[] = $linea_separada;
+            $matriz[] = explode(" ",$linea);
+            $matriz2[] = trim($linea);
+            for ($i=0; $i < count($matriz); $i++) {
+                $matrizz[$i]['posicion'] = null;
+                $matrizz[$i]['tipo'] = 'i';
+                $matrizz[$i]['programa'] = null;
+                $matrizz[$i]['valorp'] = $matriz2[$i];
+                if (!empty($matriz[$i][0])) {
+                    $matrizz[$i]['valor1'] = $matriz[$i][0];
+                }else{
+                    $matrizz[$i]['valor3'] = null;
+                }
+                if (!empty($matriz[$i][1])) {
+                    $matrizz[$i]['valor2'] = $matriz[$i][1];
+                }else{
+                    $matrizz[$i]['valor3'] = null;
+                }
+                if (!empty($matriz[$i][2])) {
+                    $matrizz[$i]['valor3'] = $matriz[$i][2];
+                }else{
+                    $matrizz[$i]['valor3'] = null;
+                }
+                if (!empty($matriz[$i][3])) {
+                    $matrizz[$i]['valor4'] = $matriz[$i][3];
+                }else{
+                    $matrizz[$i]['valor4'] = null;
+                }
+            }
         }
     }
     fclose($archivo);
-    return $matriz;
+    return $matrizz;
 }
 
-function lectura_archivo2($directorio, $nombre_archivo) {
-    $archivo = fopen($directorio.'/'.$nombre_archivo,'r');
-    while (!feof($archivo)) {
-        $linea = trim(fgets($archivo));
-        if (!stristr($linea, '//')) {
-            $matriz[] = trim($linea);
-        }else {
-            $lista_ignorada_comentarios[] = $linea;
-        }
-    }
-    fclose($archivo);
-    return $matriz;
-}
-
-function filtro ($matriz_instrucciones, $palabra) {
+function filtro_variables($matriz_instrucciones) {
     for ($i=0; $i < count($matriz_instrucciones); $i++) { 
-        if ($matriz_instrucciones[$i][0] == $palabra) {
+        if ($matriz_instrucciones[$i]['valor1'] == 'nueva') {
             $matriz[] = array_unique($matriz_instrucciones[$i]);
+            $matriz[$i]['tipo'] = 'v';
+        }
+    }
+    for ($i=0; $i < count($matriz); $i++) { 
+        if (!isset($matriz[$i]['valor4'])) {
+            $matriz[$i]['valor4'] = (string)0;
         }
     }
     return $matriz;
 }
 
-function nueva ($matriz_variables) {
-    for ($i=0; $i < count($matriz_variables); $i++) { 
-        if (!isset($matriz_variables[$i][3])) {
-            $matriz_variables[$i][3] = (string)0;
+function filtro_etiquetas($matriz_instrucciones) {
+    for ($i=0; $i < count($matriz_instrucciones); $i++) { 
+        if ($matriz_instrucciones[$i]['valor1'] == 'nueva') {
+            $matriz[] = array_unique($matriz_instrucciones[$i]);
+            $matriz[$i]['tipo'] = 'v';
         }
     }
-    return $matriz_variables;
+    for ($i=0; $i < count($matriz); $i++) { 
+        if (!isset($matriz[$i]['valor4'])) {
+            $matriz[$i]['valor4'] = (string)0;
+        }
+    }
+    return $matriz;
 }
 
 function otros_archivos($matriz_instrucciones_sinseparar, $matriz_variables_nueva) {
@@ -206,27 +235,33 @@ function programas2($directorio, $array_programas) {
     return $matriz;
 }
 
-function memoria_principal ($acumulador, $kernel, $memoria, $instrucciones_juntas) {
+function memoria_principal ($matriz_completa, $acumulador, $kernel, $memoria, $instrucciones_juntas) {
     $var = 1+$kernel+count($instrucciones_juntas);
-    $array[0] = $acumulador;
-    for ($i=0; $i < $kernel; $i++) {
-        array_push($array, '*** KERNEL ***');
+    $matriz_completa[0]["tipo"] = 'a';
+    $matriz_completa[0]["valorp"] = $acumulador;
+    for ($i=1; $i <= $kernel; $i++) {
+        $matriz_completa[$i]['tipo'] = 'k';
+        $matriz_completa[$i]['valorp'] = '*** KERNEL ***';
     }
-    for ($i=0; $i < count($instrucciones_juntas); $i++) {
-        array_push($array, $instrucciones_juntas[$i]);
+    for ($i=(1+$kernel); $i < $var; $i++) {
+        $matriz_completa[$i]['tipo'] = 'e';
+        $matriz_completa[$i]['valorp'] = $instrucciones_juntas[$i-1-$kernel];
     }
+
+
+
 
     $validacion2 = '';
     if ($var < $memoria) {
         for ($i=0; $i < $memoria-$var; $i++) {
-            array_push($array, null);
+            array_push($matriz_completa, null);
         }
     }else {
         $validacion2 = 'Se ha alcanzado el límite de la memoria principal, no se permite cargar más programas';
     }
     $_SESSION['validacion2'] = $validacion2;
     
-    return $array;
+    return $matriz_completa;
 }
 
 function directorios_array($directorio) {
