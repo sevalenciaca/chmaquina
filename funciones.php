@@ -18,12 +18,17 @@ if (validacion_directorio($directorio)) {
     }
     $matriz_instrucciones = lectura_archivo($directorio, $nombre_archivo);
     $matriz_instrucciones_sinseparar = lectura_archivo2($directorio, $nombre_archivo);
+
     $matriz_variables = filtro($matriz_instrucciones, 'nueva');
     $matriz_variables_nueva = nueva($matriz_variables);
+
     $matriz_etiquetas = filtro($matriz_instrucciones, 'etiqueta');
+    
     $otros_archivos = otros_archivos($matriz_instrucciones_sinseparar, $matriz_variables_nueva);
-    $instrucciones_juntas = programas($directorio, $array_programas, $matriz_variables_nueva);
+    $instrucciones_juntas = programas($directorio, $array_programas);
+    $instrucciones_juntas2 = programas2($directorio, $array_programas);
     $array_memoria_principal = memoria_principal($acumulador, $kernel, $memoria, $instrucciones_juntas);
+    $array_memoria_principal2 = memoria_principal($acumulador, $kernel, $memoria, $instrucciones_juntas2);
     $matriz_sintaxis = sintaxis($matriz_instrucciones);
 
     $validacion3 = '';
@@ -62,8 +67,31 @@ if (validacion_directorio($directorio)) {
     $_SESSION['validacion5'] = $validacion5;
 
     // echo '<pre>';
-    // var_dump($instrucciones_juntas);
+    // var_dump($matriz_instrucciones);
     // echo '</pre>';
+    // echo '<pre>';
+    // var_dump($matriz_instrucciones_sinseparar);
+    // echo '</pre>';
+    // echo '<pre>';
+    // var_dump($matriz_variables);
+    // echo '</pre>';
+    // echo '<pre>';
+    // var_dump($matriz_variables_nueva);
+    // echo '</pre>';
+    // echo '<pre>';
+    // var_dump($matriz_etiquetas);
+    // echo '</pre>';
+
+    // echo '<pre>';
+    // var_dump($otros_archivos);
+    // echo '</pre>';
+
+    // echo '<pre>';
+    // var_dump($array_memoria_principal);
+    // echo '</pre>';
+    echo '<pre>';
+    var_dump($array_memoria_principal2);
+    echo '</pre>';
 }
 
 function validacion_directorio($directorio) {
@@ -90,8 +118,6 @@ function lectura_archivo($directorio, $nombre_archivo) {
         if (!stristr($linea, '//')) {
             $linea_separada = explode(" ",$linea);
             $matriz[] = $linea_separada;
-        }else {
-            $lista_ignorada_comentarios[] = $linea;
         }
     }
     fclose($archivo);
@@ -135,22 +161,47 @@ function otros_archivos($matriz_instrucciones_sinseparar, $matriz_variables_nuev
         $array[] = $matriz_instrucciones_sinseparar[$i];
     }
     for ($i=0; $i < count($matriz_variables_nueva); $i++) {
+        array_push($array, $matriz_variables_nueva[$i][3]);
+    }
+    return $array;
+}
+
+function otros_archivos2($matriz_instrucciones_sinseparar, $matriz_variables_nueva) {
+    for ($i=0; $i < count($matriz_instrucciones_sinseparar); $i++) {
+        $array[] = $matriz_instrucciones_sinseparar[$i];
+    }
+    for ($i=0; $i < count($matriz_variables_nueva); $i++) {
         array_push($array, $matriz_variables_nueva[$i][1]);
     }
     return $array;
 }
 
-function programas($directorio, $array_programas, $matriz_variables_nueva) {
+function programas($directorio, $array_programas) {
     if (count($array_programas) > 1) {
-        $matriz = otros_archivos(lectura_archivo2($directorio, $array_programas[0]), $matriz_variables_nueva);
+        $matriz = otros_archivos(lectura_archivo2($directorio, $array_programas[0]), nueva(filtro(lectura_archivo($directorio, $array_programas[0]),'nueva')));
         for ($i=1; $i < count($array_programas); $i++) {
-            $lectura = otros_archivos(lectura_archivo2($directorio, $array_programas[$i]), $matriz_variables_nueva);
+            $lectura = otros_archivos(lectura_archivo2($directorio, $array_programas[$i]), nueva(filtro(lectura_archivo($directorio, $array_programas[$i]),'nueva')));
             for ($j=0; $j < count($lectura); $j++) {
                 array_push($matriz, $lectura[$j]);
             }
         }
     }else {
-        $matriz = otros_archivos(lectura_archivo2($directorio, $array_programas[0]), $matriz_variables_nueva);
+        $matriz = otros_archivos(lectura_archivo2($directorio, $array_programas[0]), nueva(filtro(lectura_archivo($directorio, $array_programas[0]),'nueva')));
+    }
+    return $matriz;
+}
+
+function programas2($directorio, $array_programas) {
+    if (count($array_programas) > 1) {
+        $matriz = otros_archivos2(lectura_archivo2($directorio, $array_programas[0]), nueva(filtro(lectura_archivo($directorio, $array_programas[0]),'nueva')));
+        for ($i=1; $i < count($array_programas); $i++) {
+            $lectura = otros_archivos2(lectura_archivo2($directorio, $array_programas[$i]), nueva(filtro(lectura_archivo($directorio, $array_programas[$i]),'nueva')));
+            for ($j=0; $j < count($lectura); $j++) {
+                array_push($matriz, $lectura[$j]);
+            }
+        }
+    }else {
+        $matriz = otros_archivos2(lectura_archivo2($directorio, $array_programas[0]), nueva(filtro(lectura_archivo($directorio, $array_programas[0]),'nueva')));
     }
     return $matriz;
 }

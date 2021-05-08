@@ -29,17 +29,13 @@
                         <span class="input-group-text"><strong>Acumulador</strong></span>
                         <input type="number" value="<?php $var = (isset($acumulador)) ? $acumulador : 0 ; echo $var; ?>" name="kernel" class="form-control" disabled="true">
                     </div>
-                    <!-- <div class="mt-4 ps-2 d-flex justify-content-center" style="color:white">
-                        <strong>ACUMULADOR: <?php $var = (isset($acumulador)) ? $acumulador : 0 ; echo $var; ?></strong>
-                    </div> -->
-
                 </div>
             </div>
         </div>
         <div class="position-relative col-12 col-md-4 col-lg-5 col-xl-5">
             <img src="img/monitor.png" class="img-fluid" alt="Monitor">
             <div class="p-4 ms-3 position-absolute top-0 end-0 start-0 botton-0" style="color:#2fff00">
-                <!-- > _ Resultado = 145 -->
+                > _ Resultado = 145
             </div>
         </div>
         <div class="position-relative col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
@@ -48,7 +44,7 @@
                 <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-power-off"></i> Imprimir</button>
             </div>
             <div class="position-absolute top-50 start-50 end-0 botton-0 translate-middle">
-                <!-- Resultado = 145 -->
+                Resultado = 145
             </div>
         </div>
     </div>

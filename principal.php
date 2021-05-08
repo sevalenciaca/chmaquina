@@ -8,7 +8,7 @@
                     <?php tabla_chprogramas($array_programas, $instrucciones_juntas, $kernel, $directorio, $matriz_variables_nueva); ?>
                     <div class="row">
                         <div class="col-12 col-md-12 col-lg-6 col-xl-6">
-                            <?php tabla_instrucciones($array_memoria_principal, $kernel, $instrucciones_juntas); ?>
+                            <?php tabla_instrucciones($array_memoria_principal2, $kernel, $instrucciones_juntas); ?>
                         </div>
                         <div class="col-12 col-md-12 col-lg-6 col-xl-6">
                             <?php //tabla_variables($lista_variables, $lista_completa, $kernel, $lista_programas); ?>
@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-12 col-lg-4 col-xl-4">
-                    <div id="memoriap" style="display: none;">
+                    <div id="memoriap" style="display: block;">
                         <?php tabla_memoriaprincipal($array_memoria_principal, $kernel); ?>
                     </div>
                     <div class="mt-3">

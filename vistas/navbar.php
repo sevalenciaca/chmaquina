@@ -30,7 +30,7 @@
                         <i class="fas fa-memory"></i> Memoria
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="javascript:document.getElementById('memoriap').style.display = 'block';void0"><i class="fas fa-eye"></i> Mostrar</a></li>
+                        <li><a class="dropdown-item" href="javascript:document.getElementById('memoriap').style.display='block';void0"><i class="fas fa-eye"></i> Mostrar</a></li>
                         <li><a class="dropdown-item" href="javascript:document.getElementById('memoriap').style.display='none';void0"><i class="fas fa-eye-slash"></i> Ocultar</a></li>
                     </ul>
                 </li>

@@ -84,7 +84,7 @@
     </div>
 <?php } ?>
 <!-- INSTRUCCIONES -->
-<?php function tabla_instrucciones($array_memoria_principal, $kernel, $instrucciones_juntas){ ?>
+<?php function tabla_instrucciones($array_memoria_principal2, $kernel, $instrucciones_juntas){ ?>
     <div class="table-wrapper-scroll-y2 my-custom-scrollbar2">
         <table class="table table-light table-striped shadow">
             <thead>
@@ -101,7 +101,7 @@
                         '
                         <tr>
                             <td scope="row">'.$posicion.'</td>
-                            <td>'.$array_memoria_principal[$i].'</td>
+                            <td>'.$array_memoria_principal2[$i].'</td>
                         </tr>
                         '
                         ;
