@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="far fa-file-alt"></i> Archivo
                     </a>
                     <ul class="dropdown-menu disabled" aria-labelledby="navbarDropdownMenuLink">
@@ -29,29 +29,29 @@
                 </li>
                 <li class="nav-item">
                     <button class="nav-link btn btn-link" type="submit" form="formCPU"><i class="fas fa-play"></i> Ejecutar</button>
+                    <!-- <a class="nav-link" form=><i class="fas fa-play"></i> Ejecutar</a> -->
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-pause"></i> Pausar</a>
+                    <a class="nav-link disabled" href="#"><i class="fas fa-pause"></i> Pausar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-list"></i> Pasos</a>
+                    <a class="nav-link disabled" href="#"><i class="fas fa-list"></i> Pasos</a>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <button class="nav-link btn btn-link" type="submit" form="formCPU"><i class="fas fa-memory"></i> Memoria</button>
-                    <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-memory"></i> Memoria
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="javascript:document.getElementById('memoriap').style.display='block';void0"><i class="fas fa-eye"></i> Mostrar</a></li>
                         <li><a class="dropdown-item" href="javascript:document.getElementById('memoriap').style.display='none';void0"><i class="fas fa-eye-slash"></i> Ocultar</a></li>
-                    </ul> -->
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fas fa-book"></i> Instrucciones</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-trash"></i> Eliminar
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -70,3 +70,13 @@
         </div>
     </div>
 </nav>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-auto">
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <i class="fas fa-info-circle"></i> Para iniciar el programa debe ingresar los valores de la <strong>memoria</strong> y el <strong>kernel</strong>
+                e inmediatamente darle en el botón <strong><span>" <i class="fas fa-play"></i> Ejecutar"</span></strong>
+            </div>
+        </div>
+    </div>
+</div>

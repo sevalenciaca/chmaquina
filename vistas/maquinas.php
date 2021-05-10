@@ -12,22 +12,17 @@
                         <input type="range" class="form-range" name="velocidad">
                         <div class="input-group mt-3">
                             <span class="input-group-text"><strong>Memoria</strong></span>
-                            <input id="inputmemoria" type="number" min="0" max="9999" value="<?php $var = (isset($_POST['memoria'])) ? $_POST['memoria'] : $var2 = (isset($array_memoria_principal)) ? $memoria : null ; echo $var; ?>" name="memoria" class="form-control">
+                            <input id="inputmemoria" type="number" min="<?php echo (count($instrucciones_juntas) + 1 + $_SESSION['kernel']) ?>" max="9999" value="<?php $var = (isset($_POST['memoria'])) ? $_POST['memoria'] : $var2 = (isset($array_memoria_principal)) ? $_SESSION['memoria'] : null ; echo $var; ?>" name="memoria" class="form-control">
                         </div>
 
                         <div class="input-group mt-3">
                             <span class="input-group-text"><strong>Kernel</strong></span>
-                            <input id="inputkernel" type="number" min="0" max="9999" value="<?php $var = (isset($_POST['kernel'])) ? $_POST['kernel'] : $var2 = (isset($array_memoria_principal)) ? $kernel : null ; echo $var; ?>" name="kernel" class="form-control">
+                            <input id="inputkernel" type="number" min="0" max="9999" value="<?php $var = (isset($_POST['kernel'])) ? $_POST['kernel'] : $var2 = (isset($array_memoria_principal)) ? $_SESSION['kernel'] : null ; echo $var; ?>" name="kernel" class="form-control">
                         </div>
-    
-                        <!-- <div class="mt-0 d-flex justify-content-center" style="color:white">
-                            <input class="btn btn-link text-decoration-none fw-bold" type="submit" value="CARGAR DATOS" style="color: white;"/>
-                        </div> -->
-
                     </form>
                     <div class="input-group mt-3">
                         <span class="input-group-text"><strong>Acumulador</strong></span>
-                        <input type="number" value="<?php $var = (isset($acumulador)) ? $acumulador : 0 ; echo $var; ?>" name="kernel" class="form-control" disabled="true">
+                        <input type="number" value="<?php $var = (isset($acumulador)) ? $_SESSION['acumulador'] : 0 ; echo $var; ?>" name="kernel" class="form-control" disabled="true">
                     </div>
                 </div>
             </div>

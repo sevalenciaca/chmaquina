@@ -36,20 +36,20 @@
     <script src="js/inputs.js"></script>
 </head>
 <body>
-    <?php // session_start(); ?>
     <?php include("funciones.php"); ?>
-    <?php // include("vistas/navbar.php"); ?>
+    <?php include("mpvacia.php"); ?>
+    <?php include("vistas/navbar.php"); ?>
 
-    <?php // include("validaciones/cargarchivo.php"); ?>
-    <?php // include("validaciones/sintaxiscorrecta.php"); ?>
-    <?php // include("validaciones/sintaxisincorrecta.php"); ?>
-    <?php // include("validaciones/memoria.php"); ?>
-    <?php // include("validaciones/vacio.php"); ?>
+    <?php include("validaciones/cargarchivo.php"); ?>
+    <?php include("validaciones/sintaxiscorrecta.php"); ?>
+    <?php include("validaciones/sintaxisincorrecta.php"); ?>
+    <?php include("validaciones/memoria.php"); ?>
+    <?php include("validaciones/vacio.php"); ?>
 
-    <?php // include("vistas/maquinas.php"); ?>
-    <?php // include("tablas.php"); ?>
-    <?php // include("principal.php"); ?>
-    <?php // include("vistas/footer.php"); ?>
+    <?php include("vistas/maquinas.php"); ?>
+    <?php include("tablas.php"); ?>
+    <?php include("principal.php"); ?>
+    <?php include("vistas/footer.php"); ?>
 </body>
 <!-- Bootstrap js -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>

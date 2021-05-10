@@ -1,5 +1,5 @@
 <!-- CH PROGRAMAS -->
-<?php function tabla_chprogramas($array_programas, $instrucciones_juntas, $kernel, $directorio, $matriz_variables_nueva){ ?>
+<?php function tabla_chprogramas($array_programas, $directorio, $kernel, $array_memoria_principal){ ?>
     <p class="fs-5 mb-0 p-2 d-flex justify-content-center" style="background-color: #212529; color:white">CH PROGRAMAS</p>
     <table class="table table-dark table-striped shadow">
         <thead>
@@ -14,24 +14,28 @@
         </thead>
         <tbody>
             <?php
-                // $RB = $kernel+1;
                 // $RLC = $kernel + count($instrucciones_juntas);
                 // $RLP = $kernel + $no_instrucciones;
                 for ($i=0; $i < count($array_programas); $i++) {
-                    $instrucciones = otros_archivos(lectura_archivo2($directorio, $array_programas[$i]), $matriz_variables_nueva);
                     $posicion = substr(str_repeat(0, 4).$i, - 4);
+                    $instrucciones = count(lectura_archivo($directorio, $array_programas[$i]));
+                    
+                    $RB = $kernel + 1;
+                    $RLC = $kernel + $instrucciones;
+
                     echo 
                     '
                     <tr>
-                        <td scope="row">'.$posicion.'</td>
-                        <td>'.$array_programas[$i].'</td>
-                        <td>'.count($instrucciones).'</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    <td scope="row">'.$posicion.'</td>
+                    <td>'.$array_programas[$i].'</td>
+                    <td>'.$instrucciones.'</td>
+                    <td>'.$RB.'</td>
+                    <td>'.$RLC.'</td>
+                    <td>'.$i.'</td>
                     </tr>
                     '
                     ;
+
                 }
             ?>
         </tbody>
@@ -75,6 +79,50 @@
                         <th scope="row"><i class="fas fa-file-code fa-lg" style="color: yellow;"></i></th>
                         <td>'.$posicion.'</td>
                         <td>'.$array_memoria_principal[$i].'</td>
+                        </tr>
+                        ';
+                    }
+                ?>
+            </tbody>
+        </table>
+    </div>
+<?php } ?>
+<!-- MEMORIA PRINCIPAL VACIA -->
+<?php function tabla_mpvacia($mp_vacia, $kernel, $memoria) { ?>
+    <p class="fs-5 mb-0 p-2 d-flex justify-content-center" style="background-color: #212529; color:white">MEMORIA PRINCIPAL</p>
+    <div class="table-wrapper-scroll-y my-custom-scrollbar shadow fs-6">
+        <table class="table table-dark table-striped shadow">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Posición</th>
+                    <th scope="col">Contenido</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"><i class="fas fa-layer-group fa-lg" style="color: red;"></i></th>
+                    <td><?php echo $mp_vacia[0]['posicion']; ?></td>
+                    <td><?php echo $mp_vacia[0]['valorp']; ?></td>
+                </tr>
+                <?php
+                    for ($i=1; $i <= $kernel; $i++) {
+                        echo
+                        '
+                        <tr>
+                            <th scope="row"><i class="fas fa-sd-card fa-lg" style="color: green;"></i></th>
+                            <td>'.$mp_vacia[$i]['posicion'].'</td>
+                            <td>'.$mp_vacia[$i]['valorp'].'</td>
+                        </tr>
+                        '
+                        ;
+                    }
+                    for ($i=$kernel+1; $i < $memoria; $i++) {
+                        echo '
+                        <tr>
+                        <th scope="row"><i class="fas fa-file-code fa-lg" style="color: yellow;"></i></th>
+                        <td>'.$mp_vacia[$i]['posicion'].'</td>
+                        <td>'.$mp_vacia[$i]['valorp'].'</td>
                         </tr>
                         ';
                     }
